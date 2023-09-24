@@ -1,3 +1,3 @@
-# UnityTemplate
+# ProjectMoney
 
-Template for Unity Projects
+Little Game to make use of Unity IAP.
