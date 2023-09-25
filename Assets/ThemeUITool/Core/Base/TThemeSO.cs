@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace ThemeUITool
+namespace ThemeUI
 {
     public abstract class TThemeSO : ScriptableObject
     {

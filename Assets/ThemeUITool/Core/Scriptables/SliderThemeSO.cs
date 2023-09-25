@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
     
-namespace ThemeUITool
+namespace ThemeUI
 {
     [CreateAssetMenu(fileName = "New Slider Theme", menuName = "UI/Slider Theme")]
     public class SliderThemeSO : TThemeSO

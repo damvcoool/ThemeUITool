@@ -4,28 +4,49 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUITool
+namespace ThemeUI
 {
     [ExecuteAlways]
     public abstract class TThemeSelector : MonoBehaviour
     {
-        //public virtual TThemeSO theme { get; set; }
+        [NonSerialized] public TThemeSO m_ThemeTemp;
 
         // Validate True is needed to apply the theme when it's changed.
         [NonSerialized] public bool Validate = false;
 
         protected virtual void OnValidate()
         {
-            Validate = true;
+            Validate = true;            
         }
-        protected virtual void Awake()
+        //protected virtual void Awake()
+        //{
+        //    ApplyTheme();
+        //}
+        protected abstract void Apply();
+        public virtual void ApplyTheme()
         {
-            ApplyTheme();
+            Register();
+            Apply();
+            Validate = false;
         }
-        protected virtual void OnEnable() { }
-        protected virtual void OnDisable() { }
-        public abstract void Register();
-        public abstract void ApplyTheme();
+        protected void Register()
+        {
+            if (m_ThemeTemp != null)
+            {
+                m_ThemeTemp.OnThemeChanged -= ApplyTheme;
+                m_ThemeTemp.OnThemeChanged += ApplyTheme;
+            }
+        }
+        protected void OnEnable()
+        {
+            if (m_ThemeTemp != null)
+                m_ThemeTemp.OnThemeChanged += ApplyTheme;
+        }
+        protected void OnDisable()
+        {
+            if (m_ThemeTemp != null)
+                m_ThemeTemp.OnThemeChanged -= ApplyTheme;
+        }
 
         protected void SetShadow(GameObject target, bool addShadow, Vector2 shadowOffset, Color shadowColor)
         {

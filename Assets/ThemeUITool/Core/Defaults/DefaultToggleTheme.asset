@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 249532438a914234a89fe75054c00f46, type: 3}
-  m_Name: DefaultSlider
+  m_Script: {fileID: 11500000, guid: 2d523119078cc9142a158fac044f51ff, type: 3}
+  m_Name: DefaultToggleTheme
   m_EditorClassIdentifier: 
   width: 160
   height: 20
-  handleSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  handleWith: 20
+  backgroundSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   colorBlock:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -24,7 +23,9 @@ MonoBehaviour:
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
-  fillSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  fillColor: {r: 1, g: 1, b: 1, a: 1}
-  backgroundSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  checkmarkImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  checkmarkColor: {r: 1, g: 1, b: 1, a: 1}
+  displayText: 1
+  textSize: 14
+  fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  fontColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

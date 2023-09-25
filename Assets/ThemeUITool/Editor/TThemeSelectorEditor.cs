@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace ThemeUITool
+namespace ThemeUI
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(TThemeSelector), true)]
@@ -16,6 +16,7 @@ namespace ThemeUITool
             //}
 
             DrawPropertiesExcluding(serializedObject, "m_Script");
+
 
             if (themeSelector.Validate == true)
                 themeSelector.ApplyTheme();

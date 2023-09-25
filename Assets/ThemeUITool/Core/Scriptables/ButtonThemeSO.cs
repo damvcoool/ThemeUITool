@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUITool
+namespace ThemeUI
 {
     [CreateAssetMenu(fileName = "New Button Theme", menuName = "UI/Button Theme")]
     public class ButtonThemeSO : TThemeSO

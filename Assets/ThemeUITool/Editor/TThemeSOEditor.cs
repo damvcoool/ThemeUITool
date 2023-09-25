@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace ThemeUITool
+namespace ThemeUI
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(TThemeSO), true)]
