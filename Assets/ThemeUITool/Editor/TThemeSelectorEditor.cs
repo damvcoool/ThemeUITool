@@ -17,9 +17,10 @@ namespace ThemeUI
 
             DrawPropertiesExcluding(serializedObject, "m_Script");
 
-
-            if (themeSelector.Validate == true)
+            if (themeSelector.Validate == true && themeSelector.m_ThemeTemp != null)
+            {
                 themeSelector.ApplyTheme();
+            }
 
             serializedObject.ApplyModifiedProperties();
         }

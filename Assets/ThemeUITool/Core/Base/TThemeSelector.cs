@@ -25,9 +25,10 @@ namespace ThemeUI
         protected abstract void Apply();
         public virtual void ApplyTheme()
         {
+            Validate = false;
             Register();
             Apply();
-            Validate = false;
+
         }
         protected void Register()
         {
