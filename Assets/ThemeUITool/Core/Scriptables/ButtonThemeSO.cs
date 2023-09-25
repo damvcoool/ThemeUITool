@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace ThemeUI
 {
-    [CreateAssetMenu(fileName = "New Button Theme", menuName = "UI/Button Theme")]
+    [CreateAssetMenu(fileName = "New Button Theme", menuName = "Themed UI/Button Theme", order = 1)]
     public class ButtonThemeSO : TThemeSO
     {
         [Header("General Properties")]

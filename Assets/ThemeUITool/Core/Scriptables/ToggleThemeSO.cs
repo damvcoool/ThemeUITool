@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace ThemeUI
 {
-    [CreateAssetMenu(fileName = "New Toggle Theme", menuName = "UI/Toggle Theme")]
+    [CreateAssetMenu(fileName = "New Toggle Theme", menuName = "Themed UI/Toggle Theme", order = 1)]
     public class ToggleThemeSO : TThemeSO
     {
         [Header("General Properties")]

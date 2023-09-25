@@ -3,7 +3,7 @@ using UnityEngine.UI;
     
 namespace ThemeUI
 {
-    [CreateAssetMenu(fileName = "New Slider Theme", menuName = "UI/Slider Theme")]
+    [CreateAssetMenu(fileName = "New Slider Theme", menuName = "Themed UI/Slider Theme", order = 1)]
     public class SliderThemeSO : TThemeSO
     {
         [Header("General Properties")]
