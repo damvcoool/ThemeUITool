@@ -14,7 +14,7 @@ namespace ThemeUI
         public static void AddButton(MenuCommand menuCommand)
         {
             GameObject go = new GameObject("Themed Button", typeof(CanvasRenderer),typeof(ButtonThemeSelector), typeof(Image), typeof(Button));
-            go.GetComponent<ButtonThemeSelector>().m_ThemeTemp = (ButtonThemeSO)ThemeUITool.GetDefaultTheme(typeof(ButtonThemeSO));
+            go.GetComponent<ButtonThemeSelector>().theme = (ButtonThemeSO)ThemeUITool.GetDefaultTheme(typeof(ButtonThemeSO));
             go.GetComponent<ButtonThemeSelector>().targetButton = go.GetComponent<Button>();
             go.GetComponent<Image>().type = Image.Type.Sliced;
 
@@ -33,7 +33,7 @@ namespace ThemeUI
         public static void AddSlider(MenuCommand menuCommand)
         {
             GameObject go = new GameObject("Themed Slider", typeof(RectTransform), typeof(SliderThemeSelector), typeof(Slider));
-            go.GetComponent<SliderThemeSelector>().m_ThemeTemp = (SliderThemeSO)ThemeUITool.GetDefaultTheme(typeof(SliderThemeSO));
+            go.GetComponent<SliderThemeSelector>().theme = (SliderThemeSO)ThemeUITool.GetDefaultTheme(typeof(SliderThemeSO));
             go.GetComponent<SliderThemeSelector>().targetSlider = go.GetComponent<Slider>();
 
             var bg = new GameObject("Background", typeof(CanvasRenderer), typeof(Image));
@@ -66,7 +66,7 @@ namespace ThemeUI
         public static void AddToggle(MenuCommand menuCommand)
         {
             GameObject go = new GameObject("Themed Toggle", typeof(RectTransform),typeof(ToggleThemeSelector),typeof(Toggle));
-            go.GetComponent<ToggleThemeSelector>().m_ThemeTemp = (ToggleThemeSO)ThemeUITool.GetDefaultTheme(typeof(ToggleThemeSO));
+            go.GetComponent<ToggleThemeSelector>().theme = (ToggleThemeSO)ThemeUITool.GetDefaultTheme(typeof(ToggleThemeSO));
             go.GetComponent<ToggleThemeSelector>().targetToggle = go.GetComponent<Toggle>();
             go.GetComponent<Toggle>().isOn = true;
 

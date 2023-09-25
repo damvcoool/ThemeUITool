@@ -7,102 +7,53 @@ using UnityEngine.UI;
 namespace ThemeUI
 {
     [ExecuteAlways]
-    public abstract class TThemeSelector : MonoBehaviour
+    public abstract class TThemeSelector<T> : MonoBehaviour where T : TThemeSO
     {
-        [NonSerialized] public TThemeSO m_ThemeTemp;
+        // Fields
+        [SerializeField] private protected T m_Theme;
+        
+        // Properties
+        public T theme { get; set; }
 
         // Validate True is needed to apply the theme when it's changed.
         [NonSerialized] public bool Validate = false;
 
-        protected virtual void OnValidate()
-        {
-            Validate = true;            
-        }
-        //protected virtual void Awake()
-        //{
-        //    ApplyTheme();
-        //}
-        protected abstract void Apply();
+        // Public Methods
         public virtual void ApplyTheme()
         {
             Validate = false;
             Register();
             Apply();
-
         }
-        protected void Register()
+
+        // Private Methods
+        protected void OnValidate()
         {
-            if (m_ThemeTemp != null)
-            {
-                m_ThemeTemp.OnThemeChanged -= ApplyTheme;
-                m_ThemeTemp.OnThemeChanged += ApplyTheme;
-            }
+            Validate = true;            
         }
         protected void OnEnable()
         {
-            if (m_ThemeTemp != null)
-                m_ThemeTemp.OnThemeChanged += ApplyTheme;
+            if (theme != null)
+                theme.OnThemeChanged += ApplyTheme;
         }
         protected void OnDisable()
         {
-            if (m_ThemeTemp != null)
-                m_ThemeTemp.OnThemeChanged -= ApplyTheme;
+            if (theme != null)
+                theme.OnThemeChanged -= ApplyTheme;
         }
-
-        protected void SetShadow(GameObject target, bool addShadow, Vector2 shadowOffset, Color shadowColor)
+        protected void Awake()
         {
-            Shadow shadow = target.GetComponent<Shadow>();
-            if (addShadow)
-            {
-                if (shadow == null)
-                {
-                    shadow = target.AddComponent<Shadow>();
-                }
-                else
-                {
-                    shadow.enabled = true;
-
-                }
-                shadow.effectDistance = shadowOffset;
-                shadow.effectColor = shadowColor;
-            }
-            else if (!addShadow && target.GetComponent<Shadow>() != null)
-            {
-                shadow.enabled = false;
-            }
+            theme = ThemeUITool.GetDefaultTheme<T>();
         }
-
-        protected void SetTextTheme(TMP_Text target, float themeFontSize, TMP_FontAsset themeFont, Color themeColor)
+        protected void Register()
         {
-            if (target != null)
+            if (theme != null)
             {
-                target.fontSize = themeFontSize;
-                target.color = themeColor;
-                if (themeFont != null)
-                {
-                    target.font = themeFont;
-                }
+                theme.OnThemeChanged -= ApplyTheme;
+                theme.OnThemeChanged += ApplyTheme;
             }
         }
-
-        protected void SetImageTheme(Image target, Sprite themeSprite, Color themeColor, float? themeWith = null, float? themeHeight = null)
-        {
-            if (target != null)
-            {
-                target.sprite = themeSprite;
-                target.color = themeColor;
-
-                RectTransform rt = target.GetComponent<RectTransform>();
-
-                float x = (themeWith != null) ? themeWith.Value : rt.sizeDelta.x;
-                float y = (themeHeight != null) ? themeHeight.Value : rt.sizeDelta.y;
-                                
-                Vector2 wh = new Vector2(x, y);
-
-                target.GetComponent<RectTransform>().sizeDelta = wh;
-
-            }
-        }
+        protected private abstract void Apply();
     }
 }
 #endif
