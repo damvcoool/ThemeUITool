@@ -24,11 +24,8 @@ namespace ThemeUITool
         }
         protected virtual void OnEnable() { }
         protected virtual void OnDisable() { }
-        public virtual void Register() { }
-        public virtual void ApplyTheme()
-        {
-            Register();
-        }
+        public abstract void Register();
+        public abstract void ApplyTheme();
 
         protected void SetShadow(GameObject target, bool addShadow, Vector2 shadowOffset, Color shadowColor)
         {

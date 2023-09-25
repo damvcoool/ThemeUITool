@@ -19,7 +19,7 @@ namespace ThemeUITool
 
         public override void ApplyTheme()
         {
-            base.ApplyTheme();
+            Register();
             Validate = false;
 
             if (m_Slider == null || m_Theme == null)
@@ -35,7 +35,7 @@ namespace ThemeUITool
         }
         public override void Register()
         {
-            base.Register();
+         
             if (m_Theme != null)
             {
                 m_Theme.OnThemeChanged -= ApplyTheme;

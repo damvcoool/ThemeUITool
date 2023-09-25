@@ -16,10 +16,10 @@ namespace ThemeUITool
         //public override TThemeSO Theme { get => m_theme; set => m_theme = (ButtonThemeSO)value; }
         public Button targetButton { get => m_Button; set => m_Button = value; }
         public TMP_Text buttonText { get => m_ButtonText; set => m_ButtonText = value; }
-
+        
         public override void ApplyTheme()
         {
-            base.ApplyTheme();
+            Register();
             Validate = false;
 
             if (m_Button == null || m_Theme == null)
@@ -34,7 +34,6 @@ namespace ThemeUITool
         }
         public override void Register()
         {
-            base.Register();
             if (m_Theme != null)
             {
                 m_Theme.OnThemeChanged -= ApplyTheme;
