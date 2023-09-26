@@ -1,8 +1,6 @@
 #if UNITY_EDITOR
 using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace ThemeUI
 {
@@ -13,9 +11,10 @@ namespace ThemeUI
         [SerializeField] private protected T m_Theme;
         
         // Properties
-        public T theme { get; set; }
+        public virtual T Theme { get; set; }
 
-        // Validate True is needed to apply the theme when it's changed.
+
+        // Validate True is needed to apply the Theme when it's changed.
         [NonSerialized] public bool Validate = false;
 
         // Public Methods
@@ -33,25 +32,20 @@ namespace ThemeUI
         }
         protected void OnEnable()
         {
-            if (theme != null)
-                theme.OnThemeChanged += ApplyTheme;
+            m_Theme.OnThemeChanged += ApplyTheme;
         }
         protected void OnDisable()
         {
-            if (theme != null)
-                theme.OnThemeChanged -= ApplyTheme;
+            m_Theme.OnThemeChanged -= ApplyTheme;
         }
         protected void Awake()
         {
-            theme = ThemeUITool.GetDefaultTheme<T>();
+            m_Theme = ThemeUITool.GetDefaultTheme<T>();
         }
         protected void Register()
         {
-            if (theme != null)
-            {
-                theme.OnThemeChanged -= ApplyTheme;
-                theme.OnThemeChanged += ApplyTheme;
-            }
+            m_Theme.OnThemeChanged -= ApplyTheme;
+            m_Theme.OnThemeChanged += ApplyTheme;
         }
         protected private abstract void Apply();
     }

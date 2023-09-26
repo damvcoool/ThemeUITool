@@ -13,13 +13,13 @@ namespace ThemeUI
         [SerializeField] private Image m_Background;
 
         // Properties
-        //new public ScrollbarThemeSO theme { get => m_Theme; set => m_Theme = value; }
+        //new public ScrollbarThemeSO Theme { get => m_Theme; set => m_Theme = value; }
         public Scrollbar targetScrollbar { get => m_Scrollbar; set => m_Scrollbar = value; }
         public Image scrollbarBackground { get => m_Background; set => m_Background = value; }
 
         protected private override void Apply()
         {
-            if (m_Theme == null & theme != null) m_Theme = theme;
+            if (m_Theme == null & Theme != null) m_Theme = Theme;
 
             if (m_Scrollbar != null)
             {

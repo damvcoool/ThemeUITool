@@ -18,7 +18,7 @@ namespace ThemeUI
 
         protected private override void Apply()
         {
-            if (m_Theme == null) m_Theme = theme;
+            if (m_Theme == null) m_Theme = Theme;
 
             if (m_Button != null)
             {

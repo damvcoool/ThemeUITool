@@ -19,7 +19,7 @@ namespace ThemeUI
         // Private Methods
         protected private override void Apply()
         {
-            if (m_Theme == null & theme != null) m_Theme = theme;
+            if (m_Theme == null & Theme != null) m_Theme = Theme;
 
             if (m_Toggle != null)
             {

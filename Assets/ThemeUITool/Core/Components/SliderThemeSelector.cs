@@ -13,13 +13,13 @@ namespace ThemeUI
         [SerializeField] private Image m_Background;
 
         // Properties
-        //new public SliderThemeSO theme { get => m_Theme; set => m_Theme = value; }
+        //new public SliderThemeSO Theme { get => m_Theme; set => m_Theme = value; }
         public Slider targetSlider { get => m_Slider; set => m_Slider = value; }
         public Image sliderBackground { get => m_Background; set => m_Background = value; }
 
         protected private override void Apply()
         {
-            if (m_Theme == null & theme != null) m_Theme = theme;
+            if (m_Theme == null & Theme != null) m_Theme = Theme;
 
             if (m_Slider != null)
             {

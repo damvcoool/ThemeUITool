@@ -91,10 +91,10 @@ namespace ThemeUI
             // Filter themeObjects based on the specific derived type
             themeObjects = Array.FindAll(themeObjects, theme => type.IsAssignableFrom(theme.GetType()));
 
-            // Create the default theme name based on the type
+            // Create the default Theme name based on the type
             string name = "Default" + type.Name;
 
-            // Find and return the default theme
+            // Find and return the default Theme
             return themeObjects.FirstOrDefault(theme => theme.name.Equals(name.Substring(0, name.Length - 2))) as T;
         }
 
