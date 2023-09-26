@@ -28,7 +28,7 @@ namespace ThemeUI
 
             if (parent == null)
             {
-                var canvas = GameObject.FindFirstObjectByType<Canvas>();
+                var canvas = FindFirstObjectByType<Canvas>();
                 if (canvas == null)
                 {
                     GameObject canvasGo = new GameObject("Canvas", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
