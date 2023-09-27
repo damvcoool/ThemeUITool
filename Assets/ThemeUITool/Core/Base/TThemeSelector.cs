@@ -40,7 +40,7 @@ namespace ThemeUI
         }
         protected void Awake()
         {
-            m_Theme = ThemeUITool.GetDefaultTheme<T>();
+            if(m_Theme == null) m_Theme = ThemeUITool.GetDefaultTheme<T>();
         }
         protected void Register()
         {
