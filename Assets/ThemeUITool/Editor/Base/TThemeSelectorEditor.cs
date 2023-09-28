@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ThemedUITool
 {
     [CustomEditor(typeof(TThemeSelector<>), true)]
-    public class TThemeSelectorEditor<T> : Editor where T : TThemeSO
+    public abstract class TThemeSelectorEditor<T> : Editor where T : TThemeSO
     {
         public override void OnInspectorGUI()
         {
@@ -37,6 +37,7 @@ namespace ThemedUITool
                     canvasGo.GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ConstantPhysicalSize;
 
                 }
+
                 parent = canvas.gameObject;
             }
             go.transform.SetParent(parent.transform);

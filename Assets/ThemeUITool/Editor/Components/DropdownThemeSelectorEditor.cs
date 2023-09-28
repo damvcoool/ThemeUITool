@@ -1,4 +1,5 @@
 ﻿using UnityEditor;
+using UnityEngine;
 
 namespace ThemedUITool
 {
@@ -6,6 +7,10 @@ namespace ThemedUITool
     public class DropdownThemeSelectorEditor : TThemeSelectorEditor<InputFieldThemeSO>
     {
         [MenuItem("GameObject/Themed UI/Dropdown", false, 9)]
-        public static void AddDropdown(MenuCommand menuCommand) { }
+        private static void Create(MenuCommand menuCommand)
+        {
+            GameObject go = ThemeUIToolCreator.CreateDropdown();
+            PlaceUIElementRoot(go, menuCommand);
+        }
     }
 }

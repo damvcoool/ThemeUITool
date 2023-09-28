@@ -18,7 +18,7 @@ MonoBehaviour:
     addShadow: 0
     shadowOffset: {x: 1, y: -1}
     shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
-  buttonImage: {fileID: 0}
+  buttonImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   colorBlock:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}

@@ -1,4 +1,5 @@
 ﻿using UnityEditor;
+using UnityEngine;
 
 namespace ThemedUITool
 {
@@ -6,6 +7,10 @@ namespace ThemedUITool
     public class ScrollViewThemeSelectorEditor : TThemeSelectorEditor<InputFieldThemeSO>
     {
         [MenuItem("GameObject/Themed UI/Scroll View", false, 12)]
-        public static void AddScrollView(MenuCommand menuCommand) { }
+        private static void Create(MenuCommand menuCommand) 
+        {
+            GameObject go = ThemeUIToolCreator.CreateScrollRect();
+            PlaceUIElementRoot(go, menuCommand);
+        }
     }
 }
