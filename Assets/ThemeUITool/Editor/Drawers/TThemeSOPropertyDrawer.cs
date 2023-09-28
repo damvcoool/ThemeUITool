@@ -1,12 +1,10 @@
-using System;
-using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
 namespace ThemeUI
 {
     [CustomPropertyDrawer(typeof(TThemeSO), true)]
-    public class TThemeSOPropertyDrawer: PropertyDrawer
+    public class TThemeSOPropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -32,8 +30,11 @@ namespace ThemeUI
                 }
             }
 
+            // Calculate the position for the dropdown
+            Rect dropdownPosition = new Rect(position.x, position.y, position.width - 20, position.height);
+
             // Display a dropdown with the available TThemeSO options
-            currentIndex = EditorGUI.Popup(position, label.text, currentIndex, themeNames);
+            currentIndex = EditorGUI.Popup(dropdownPosition, label.text, currentIndex, themeNames);
 
             // Set the selected TThemeSO
             if (currentIndex >= 0 && currentIndex < themeObjects.Length)
@@ -43,6 +44,17 @@ namespace ThemeUI
             else
             {
                 property.objectReferenceValue = null;
+            }
+
+            // Create a button with letter "O" to open the Scriptable Object in a property window
+            Rect buttonPosition = new Rect(position.x + position.width - 20, position.y, 20, position.height);
+            if (GUI.Button(buttonPosition, "O"))
+            {
+                if (currentIndex >= 0 && currentIndex < themeObjects.Length)
+                {
+                    // Open the Scriptable Object in a property window
+                    EditorGUIUtility.PingObject(themeObjects[currentIndex]);
+                }
             }
 
             EditorGUI.EndProperty();

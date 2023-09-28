@@ -97,6 +97,32 @@ namespace ThemeUI
             // Find and return the default Theme
             return themeObjects.FirstOrDefault(theme => theme.name.Equals(name.Substring(0, name.Length - 2))) as T;
         }
+        public static T GetSpecificTheme<T>(string Theme) where T : TThemeSO
+        {
+            // Determine the type at runtime
+            Type type = typeof(T);
+
+            // Get all TThemeSO assets in the project
+            var tThemes = AssetDatabase.FindAssets("t:TThemeSO");
+            var themeObjects = new TThemeSO[tThemes.Length];
+
+            // Convert asset GUIDs to TThemeSO objects
+            for (int i = 0; i < tThemes.Length; i++)
+            {
+                var assetPath = AssetDatabase.GUIDToAssetPath(tThemes[i]);
+                themeObjects[i] = AssetDatabase.LoadAssetAtPath<TThemeSO>(assetPath);
+            }
+
+            // Filter themeObjects based on the specific derived type
+            themeObjects = Array.FindAll(themeObjects, theme => type.IsAssignableFrom(theme.GetType()));
+
+            // Create the default Theme name based on the type
+            string name = "Default" + type.Name;
+
+            // Find and return the default Theme
+           // Debug.Log($"{themeObjects.FirstOrDefault(theme => theme.name.Equals(Theme))} or {themeObjects.Equals(Theme)}");
+            return themeObjects.FirstOrDefault(theme => theme.name.Equals(Theme)) as T;
+        }
 
         public static void SetRectTransformProperties(GameObject target, Vector4 anchorMinMax, Vector2 size, Vector3 position, GameObject parent = null)
         {
