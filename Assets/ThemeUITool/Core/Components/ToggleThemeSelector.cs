@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     public class ToggleThemeSelector : TThemeSelector<ToggleThemeSO>
     {

@@ -7,10 +7,11 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     public static class ThemeUITool
     {
+        #region GetThemes
         public static TThemeSO[] GetAllThemes(Type type)
         {
             // Get all TThemeSO assets in the project
@@ -30,7 +31,6 @@ namespace ThemeUI
 
             return themeObjects;
         }
-
         public static T[] GetAllThemes<T>() where T : TThemeSO
         {
             Type type = typeof(TThemeSO);
@@ -51,7 +51,6 @@ namespace ThemeUI
 
             return themeObjects.Cast<T>().ToArray();
         }
-
         public static TThemeSO GetDefaultTheme(Type type)
         {
             // Get all TThemeSO assets in the project
@@ -71,7 +70,6 @@ namespace ThemeUI
             string name = "Default" + type.Name;
             return themeObjects.FirstOrDefault(theme => theme.name.Equals(name.Substring(0, name.Length - 2)));
         }
-
         public static T GetDefaultTheme<T>() where T : TThemeSO
         {
             // Determine the type at runtime
@@ -123,7 +121,8 @@ namespace ThemeUI
            // Debug.Log($"{themeObjects.FirstOrDefault(theme => theme.name.Equals(Theme))} or {themeObjects.Equals(Theme)}");
             return themeObjects.FirstOrDefault(theme => theme.name.Equals(Theme)) as T;
         }
-
+        #endregion
+        #region SetProperties
         public static void SetRectTransformProperties(GameObject target, Vector4 anchorMinMax, Vector2 size, Vector3 position, GameObject parent = null)
         {
             if (parent != null) target.transform.SetParent(parent.transform, false);
@@ -187,6 +186,7 @@ namespace ThemeUI
 
             }
         }
+        #endregion
     }
 }
 #endif

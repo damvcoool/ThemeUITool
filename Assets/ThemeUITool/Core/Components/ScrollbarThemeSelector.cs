@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     public class ScrollbarThemeSelector : TThemeSelector<ScrollbarThemeSO>
     {

@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     [CustomPropertyDrawer(typeof(TThemeSO), true)]
     public class TThemeSOPropertyDrawer : PropertyDrawer

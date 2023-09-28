@@ -2,16 +2,17 @@
 using System;
 using UnityEngine;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     [ExecuteAlways]
     public abstract class TThemeSelector<T> : MonoBehaviour where T : TThemeSO
     {
         // Fields
         [SerializeField] private protected T m_Theme;
-        
+
         // Properties
-        public virtual T Theme { get; set; }
+//        public virtual T Theme { get; set; }
+        public virtual T Theme { get => m_Theme; set => m_Theme = value; }
 
 
         // Validate True is needed to apply the Theme when it's changed.
@@ -24,11 +25,10 @@ namespace ThemeUI
             Register();
             Apply();
         }
-
         // Private Methods
         protected void OnValidate()
         {
-            Validate = true;            
+            Validate = true;
         }
         protected void OnEnable()
         {
@@ -40,7 +40,7 @@ namespace ThemeUI
         }
         protected void Awake()
         {
-            if(m_Theme == null) m_Theme = ThemeUITool.GetDefaultTheme<T>();
+            if (m_Theme == null) m_Theme = ThemeUITool.GetDefaultTheme<T>();
         }
         protected void Register()
         {

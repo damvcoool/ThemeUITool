@@ -1,10 +1,8 @@
-#if UNITY_EDITOR
-
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     public class ButtonThemeSelector : TThemeSelector<ButtonThemeSO>
     {
@@ -26,11 +24,10 @@ namespace ThemeUI
 
                 ThemeUITool.SetImageTheme(m_Button.image, m_Theme.buttonImage, m_Theme.colorBlock.normalColor);
                 ThemeUITool.SetTextTheme(m_ButtonText, m_Theme.textSize, m_Theme.fontAsset, m_Theme.fontColor);
-                ThemeUITool.SetShadow(m_Button.gameObject, m_Theme.addShadow, m_Theme.shadowOffset, m_Theme.shadowColor);
+                ThemeUITool.SetShadow(m_Button.gameObject, m_Theme.addShadow.addShadow, m_Theme.addShadow.shadowOffset, m_Theme.addShadow.shadowColor);
 
                 m_Button.colors = m_Theme.colorBlock;
             }   
         }
     }
 }
-#endif

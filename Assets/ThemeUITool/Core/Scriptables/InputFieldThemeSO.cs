@@ -2,33 +2,31 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
-    [CreateAssetMenu(fileName = "New Input Field Theme", menuName = "Themed UI/Input Field Theme", order = 1)]
+    [CreateAssetMenu(fileName = "New Input Field Theme", menuName = "Themed UI/Input Field Theme", order = 3)]
     public class InputFieldThemeSO : TThemeSO
     {
         [Header("General Properties")]
         [SerializeField] internal float width = 160f;
         [SerializeField] internal float height = 30f;
-        [SerializeField] internal bool addShadow = false;
-        [SerializeField] internal Vector2 shadowOffset = new Vector2(1, -1);
-        [SerializeField] internal Color shadowColor = new Color(0.1f, 0.1f, 0.1f);
-
+        [SerializeField] internal AddShadow addShadow;
+        
         [Header("Input Properties")]
-        [SerializeField] internal Sprite fieldBackground;
+        [SerializeField] internal Sprite fieldBackground = _InputFieldBackground;
         [SerializeField] internal ColorBlock colorBlock = ColorBlock.defaultColorBlock;
-        [SerializeField] internal bool multiline = false;
-        [SerializeField] internal ScrollbarThemeSO scrollbarProfile;
+        [SerializeField, Vector4Labels("Left", "Right", "Top", "Bottom")] internal Vector4 textAreaPadding = new Vector4(-8f,-8f, -5f, -5f);
+        [SerializeField] internal UseMultiline multiline;
 
         [Header("Text Properties")]
-        [SerializeField] internal float textSize = 24f;
-        [SerializeField] internal TMP_FontAsset fontAsset;
+        [SerializeField] internal float textSize = 14f;
+        [SerializeField] internal TMP_FontAsset fontAsset = _FontAsset;
         [SerializeField] internal Color fontColor = new Color(0.2f, 0.2f, 0.2f);
 
         [Header("Placeholder Properties")]
-        [SerializeField] internal float placeholderSize = 24f;
-        [SerializeField] internal TMP_FontAsset placeholderAsset;
-        [SerializeField] internal Color placeholderColor = new Color(0.2f, 0.2f, 0.2f);
+        [SerializeField] internal float placeholderSize = 14f;
+        [SerializeField] internal TMP_FontAsset placeholderAsset = _FontAsset;
+        [SerializeField] internal Color placeholderColor = new Color(0.2f, 0.2f, 0.2f, 0.5f);
 
     }
 }

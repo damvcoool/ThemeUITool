@@ -2,12 +2,12 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     [CustomEditor(typeof(ScrollbarThemeSelector))]
     public class ScrollbarThemeSelectorEditor : TThemeSelectorEditor<ScrollbarThemeSO>
     {
-        [MenuItem("GameObject/Themed UI/Scrollbar", false, 8)]
+        [MenuItem("GameObject/Themed UI/Scrollbar", false, 11)]
         public static void AddScrollbar(MenuCommand menuCommand)
         {
             GameObject go = new GameObject("Themed Scrollbar", typeof(RectTransform), typeof(ScrollbarThemeSelector), typeof(Image), typeof(Scrollbar));

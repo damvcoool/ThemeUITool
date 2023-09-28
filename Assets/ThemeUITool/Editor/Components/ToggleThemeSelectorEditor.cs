@@ -3,12 +3,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     [CustomEditor(typeof(ToggleThemeSelector))]
     public class ToggleThemeSelectorEditor : TThemeSelectorEditor<ToggleThemeSO>
     {
-        [MenuItem("GameObject/Themed UI/Toggle", false, 8)]
+        [MenuItem("GameObject/Themed UI/Toggle", false, 14)]
         public static void AddToggle(MenuCommand menuCommand)
         {
             GameObject go = new GameObject("Themed Toggle", typeof(RectTransform), typeof(ToggleThemeSelector), typeof(Toggle));

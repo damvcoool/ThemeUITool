@@ -3,9 +3,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
-    [CustomEditor(typeof(ButtonThemeSelector))]
+    [CustomEditor(typeof(ButtonThemeSelector)),CanEditMultipleObjects]
     public class ButtonThemeSelectorEditor : TThemeSelectorEditor<ButtonThemeSO>
     {
         [MenuItem("GameObject/Themed UI/Button", false, 8)]

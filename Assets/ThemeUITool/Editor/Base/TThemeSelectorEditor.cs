@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     [CustomEditor(typeof(TThemeSelector<>), true)]
     public class TThemeSelectorEditor<T> : Editor where T : TThemeSO

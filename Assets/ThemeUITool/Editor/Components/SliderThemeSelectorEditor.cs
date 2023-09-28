@@ -2,12 +2,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     [CustomEditor(typeof(SliderThemeSelector))]
     public class SliderThemeSelectorEditor : TThemeSelectorEditor<SliderThemeSO>
     {
-        [MenuItem("GameObject/Themed UI/Slider", false, 8)]
+        [MenuItem("GameObject/Themed UI/Slider", false, 13)]
         public static void AddSlider(MenuCommand menuCommand)
         {
             GameObject go = new GameObject("Themed Slider", typeof(RectTransform), typeof(SliderThemeSelector), typeof(Slider));

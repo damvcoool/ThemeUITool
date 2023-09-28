@@ -1,11 +1,13 @@
+#if UNITY_EDITOR
 using System;
 
-namespace ThemeUI
+namespace ThemedUITool
 {
     [Serializable]
     public class UseMultiline
     {
-        public bool multiline;
+        public bool multiline = false;
         public ScrollbarThemeSO profile;
     }
 }
+#endif

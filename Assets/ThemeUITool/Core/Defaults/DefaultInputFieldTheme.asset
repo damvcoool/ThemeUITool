@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 160
   height: 30
-  addShadow: 0
-  shadowOffset: {x: 1, y: -1}
-  shadowColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  addShadow:
+    addShadow: 0
+    shadowOffset: {x: 1, y: -1}
+    shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
   fieldBackground: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   colorBlock:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26,11 +27,13 @@ MonoBehaviour:
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
-  multiline: 0
-  scrollbarProfile: {fileID: 11400000, guid: c7f9c65fbcab3694a92ac81a7fafd157, type: 2}
-  textSize: 24
-  fontAsset: {fileID: 0}
+  textAreaPadding: {x: -8, y: -8, z: -5, w: -5}
+  multiline:
+    multiline: 0
+    profile: {fileID: 11400000, guid: 15816f1d1ecb8d04986c7e8c2fdfaa0e, type: 2}
+  textSize: 14
+  fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   fontColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-  placeholderSize: 24
-  placeholderAsset: {fileID: 0}
+  placeholderSize: 14
+  placeholderAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   placeholderColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
