@@ -138,7 +138,7 @@ namespace ThemedUITool
         }
         internal static GameObject CreateScrollRect()
         {
-            GameObject go = new GameObject("Themed ScrollRect");
+            GameObject go = new GameObject("Themed Scroll View");
 
             // Needs Implementation
 

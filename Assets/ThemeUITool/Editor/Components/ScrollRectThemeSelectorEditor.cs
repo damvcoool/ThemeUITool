@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace ThemedUITool
 {
-    [CustomEditor(typeof(ScrollViewThemeSelector))]
-    public class ScrollViewThemeSelectorEditor : TThemeSelectorEditor<InputFieldThemeSO>
+    [CustomEditor(typeof(ScrollRectThemeSelector))]
+    public class ScrollRectThemeSelectorEditor : TThemeSelectorEditor<ScrollRectThemeSO>
     {
         [MenuItem("GameObject/Themed UI/Scroll View", false, 12)]
         private static void Create(MenuCommand menuCommand) 

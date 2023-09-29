@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace ThemedUITool
 {
+    [AddComponentMenu("Theme UI Tool/Toggle Theme Selector", 7)]
     public class ToggleThemeSelector : TThemeSelector<ToggleThemeSO>
     {
         // Fields
@@ -20,6 +21,7 @@ namespace ThemedUITool
         protected private override void Apply()
         {
             if (m_Theme == null & Theme != null) m_Theme = Theme;
+            if(m_Toggle ==  null || m_Label == null) WarningEmptyFields();
 
             if (m_Toggle != null)
             {

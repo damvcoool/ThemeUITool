@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace ThemedUITool
 {
+    [AddComponentMenu("Theme UI Tool/Button Theme Selector", 1)]
     public class ButtonThemeSelector : TThemeSelector<ButtonThemeSO>
     {
         // Members
@@ -19,6 +20,8 @@ namespace ThemedUITool
         protected private override void Apply()
         {
             if (m_Theme == null) m_Theme = Theme;
+
+            if (m_Button == null || m_ButtonText == null) WarningEmptyFields();
 
             if (m_Button != null)
             {

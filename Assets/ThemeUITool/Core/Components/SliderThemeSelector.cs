@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 namespace ThemedUITool
 {
+
+    [AddComponentMenu("Theme UI Tool/Slider Theme Selector", 6)]
     public class SliderThemeSelector : TThemeSelector<SliderThemeSO>
     {
         // Members
@@ -20,6 +22,7 @@ namespace ThemedUITool
         protected private override void Apply()
         {
             if (m_Theme == null & Theme != null) m_Theme = Theme;
+            if (m_Slider == null || m_Background == null) WarningEmptyFields();
 
             if (m_Slider != null)
             {

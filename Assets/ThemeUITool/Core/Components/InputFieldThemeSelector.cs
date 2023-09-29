@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 
 namespace ThemedUITool
 {
+
+    [AddComponentMenu("Theme UI Tool/Input Field Theme Selector", 3)]
     public class InputFieldThemeSelector : TThemeSelector<InputFieldThemeSO>
     {
         // Members
@@ -17,6 +20,8 @@ namespace ThemedUITool
         protected private override async void Apply()
         {
             if (m_Theme == null) m_Theme = Theme;
+
+            if (m_InputField == null) WarningEmptyFields();
 
             if (m_InputField != null)
             {

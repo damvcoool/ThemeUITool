@@ -47,6 +47,11 @@ namespace ThemedUITool
             m_Theme.OnThemeChanged -= ApplyTheme;
             m_Theme.OnThemeChanged += ApplyTheme;
         }
+
+        protected void WarningEmptyFields()
+        {
+            Debug.LogWarning($"One or more fields on the {this.GetType().Name} component are empty has not been configured", this);
+        }
         protected private abstract void Apply();
     }
 }

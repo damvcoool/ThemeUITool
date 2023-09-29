@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 namespace ThemedUITool
 {
-    public class DropdownThemeSelector : TThemeSelector<ButtonThemeSO>
+
+    [AddComponentMenu("Theme UI Tool/Dropdown Theme Selector", 2)]
+    public class DropdownThemeSelector : TThemeSelector<DropdownThemeSO>
     {
         private protected override void Apply()
         {
-            throw new System.NotImplementedException();
+            WarningEmptyFields();
         }
     }
 }
