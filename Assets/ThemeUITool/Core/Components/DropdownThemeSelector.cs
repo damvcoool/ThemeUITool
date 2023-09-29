@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿#if UNITY_EDITOR
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,3 +13,4 @@ namespace ThemedUITool
         }
     }
 }
+#endif

@@ -15,6 +15,8 @@ namespace ThemedUITool
         internal static Sprite _Knob;
         internal static Sprite _Checkmark;
         internal static TMP_FontAsset _FontAsset;
+        internal static ScrollbarThemeSO _hTheme;
+        internal static ScrollbarThemeSO _vTheme;
 
         public event UnityAction OnThemeChanged = () => { };
         [NonSerialized] public bool _themeChanged = false;
@@ -35,6 +37,8 @@ namespace ThemedUITool
             _Knob = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
             _Checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Checkmark.psd");
             _FontAsset = TMP_Settings.defaultFontAsset;
+            _hTheme = ThemeUITool.GetSpecificTheme<ScrollbarThemeSO>("DefaultHorizontalScrollbarTheme");
+            _vTheme = ThemeUITool.GetSpecificTheme<ScrollbarThemeSO>("DefaultVerticalScrollbarTheme");
         }
     }
 }

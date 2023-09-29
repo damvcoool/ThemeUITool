@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Threading;
+#if UNITY_EDITOR
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -65,3 +64,4 @@ namespace ThemedUITool
         }
     }
 }
+#endif

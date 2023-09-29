@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultInputFieldTheme
   m_EditorClassIdentifier: 
   width: 160
-  height: 30
+  height: 160
   addShadow:
     addShadow: 0
     shadowOffset: {x: 1, y: -1}
@@ -36,4 +36,4 @@ MonoBehaviour:
   fontColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   placeholderSize: 14
   placeholderAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  placeholderColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  placeholderColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.5019608}

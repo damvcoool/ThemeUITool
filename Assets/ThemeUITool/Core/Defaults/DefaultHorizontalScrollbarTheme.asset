@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53193d0d17dfe4b499bfdd7109fa2de9, type: 3}
-  m_Name: DefaultVerticalScrollbarTheme
+  m_Name: DefaultHorizontalScrollbarTheme
   m_EditorClassIdentifier: 
-  width: 20
-  height: 0
+  width: 0
+  height: 20
   handleSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   colorBlock:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -23,7 +23,7 @@ MonoBehaviour:
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
-  direction: 3
+  direction: 0
   handleSize: 0.2
   backgroundSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
