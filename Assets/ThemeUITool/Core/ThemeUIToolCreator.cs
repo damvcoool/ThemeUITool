@@ -111,8 +111,8 @@ namespace ThemedUITool
             go.GetComponent<InputFieldThemeSelector>().targetInputField = go.GetComponent<TMP_InputField>();
             go.GetComponent<Image>().type = Image.Type.Sliced;
 
-            GameObject ta = new GameObject("TextArea",typeof(RectMask2D));
-            ThemeUITool.SetRectTransformProperties(ta, new Vector4(0, 0,1,1), new Vector2(-20, -13), new Vector3(0,-0.5f,0), go);
+            GameObject ta = new GameObject("TextArea", typeof(RectMask2D));
+            ThemeUITool.SetRectTransformProperties(ta, new Vector4(0, 0, 1, 1), new Vector2(-20, -13), new Vector3(0, -0.5f, 0), go);
             go.GetComponent<TMP_InputField>().textViewport = ta.GetComponent<RectTransform>();
 
             GameObject p = new GameObject("Placeholder", typeof(TextMeshProUGUI));
@@ -128,17 +128,47 @@ namespace ThemedUITool
 
             return go;
         }
+        internal static GameObject CreateScrollRect()
+        {
+            GameObject go = new GameObject("Themed Scroll View", typeof(CanvasRenderer), typeof(ScrollRectThemeSelector), typeof(Image), typeof(ScrollRect));
+
+            ScrollRect _scrollRect = go.GetComponent<ScrollRect>();
+            ScrollRectThemeSelector _scrollbarThemeSelector = go.GetComponent<ScrollRectThemeSelector>();
+
+            _scrollbarThemeSelector.targetScrollRect = _scrollRect;
+            _scrollbarThemeSelector.background = go.GetComponent<Image>();
+            go.GetComponent<Image>().type = Image.Type.Sliced;
+
+            GameObject v = new GameObject("Viewport", typeof(Image), typeof(Mask));
+            v.GetComponent<Image>().type = Image.Type.Sliced;
+            v.GetComponent<Mask>().showMaskGraphic = false;
+            ThemeUITool.SetRectTransformProperties(v, new Vector4(0, 0, 1, 1), new Vector2(-17, -17), Vector3.zero, go);
+            v.GetComponent<RectTransform>().pivot = Vector2.up;
+            _scrollRect.viewport = v.GetComponent<RectTransform>();
+
+            GameObject c = new GameObject("Content", typeof(RectTransform));
+            c.GetComponent<RectTransform>().pivot = Vector2.up;
+            ThemeUITool.SetRectTransformProperties(c, new Vector4(0, 1, 1, 1), new Vector2(0,300), Vector3.zero, v);
+            _scrollRect.content = c.GetComponent<RectTransform>();
+
+            GameObject sh = CreateScrollbar();
+            sh.name = "Themed Scrollbar Horizontal";
+            ThemeUITool.SetRectTransformProperties(sh, new Vector4(0, 0, 1, 0), new Vector2(-20,0), Vector3.zero, go);
+            sh.GetComponent<RectTransform>().pivot = Vector2.zero;
+            _scrollRect.horizontalScrollbar = sh.GetComponent<Scrollbar>();
+
+            GameObject sv = CreateScrollbar();
+            sv.name = "Themed Scrollbar Vertical";
+            ThemeUITool.SetRectTransformProperties(sv, new Vector4(1, 0, 1, 1), new Vector2(0, -20), Vector3.zero, go);
+            sv.GetComponent<RectTransform>().pivot = Vector2.one;
+            sv.GetComponent<Scrollbar>().value = 1;
+            _scrollRect.verticalScrollbar = sv.GetComponent<Scrollbar>();
+
+            return go;
+        }
         internal static GameObject CreateDropdown()
         {
             GameObject go = new GameObject("Themed Dropdown");
-            
-            // Needs Implementation
-            
-            return go;
-        }
-        internal static GameObject CreateScrollRect()
-        {
-            GameObject go = new GameObject("Themed Scroll View");
 
             // Needs Implementation
 

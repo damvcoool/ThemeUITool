@@ -16,6 +16,7 @@ namespace ThemedUITool
         [SerializeField] internal Color backgroundColor = new Color (1,1,1,0.5f);
         [SerializeField] internal bool enableHorizontal = true;
         [SerializeField] internal bool enableVertical = true;
+        [SerializeField] internal Sprite viewportMask = _UIMask;
         [SerializeField] internal ScrollRect.MovementType contentMovement = ScrollRect.MovementType.Elastic;
         [SerializeField] internal bool useInertia = true;
 

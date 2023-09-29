@@ -15,8 +15,8 @@ namespace ThemedUITool
         [SerializeField] private Image m_Background;
 
         //// Properties
-        public ScrollRect targetButton { get => m_ScrollRect; set => m_ScrollRect = value; }
-        public Image buttonText { get => m_Background; set => m_Background = value; }
+        public ScrollRect targetScrollRect { get => m_ScrollRect; set => m_ScrollRect = value; }
+        public Image background { get => m_Background; set => m_Background = value; }
 
         protected private override void Apply()
         {
@@ -26,11 +26,15 @@ namespace ThemedUITool
 
             if (m_ScrollRect != null)
             {
+                m_ScrollRect.GetComponent<RectTransform>().sizeDelta = new Vector2(m_Theme.width, m_Theme.height);
+
                 m_Background.sprite = m_Theme.background;
                 m_Background.color = m_Theme.backgroundColor;
 
                 m_ScrollRect.horizontal = m_Theme.enableHorizontal;
                 m_ScrollRect.vertical = m_Theme.enableVertical;
+
+                m_ScrollRect.viewport.GetComponent<Image>().sprite = m_Theme.viewportMask;
 
                 m_ScrollRect.movementType = m_Theme.contentMovement;
 

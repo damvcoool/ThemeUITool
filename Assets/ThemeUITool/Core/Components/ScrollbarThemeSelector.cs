@@ -25,7 +25,6 @@ namespace ThemedUITool
 
             if (m_Scrollbar != null)
             {
-
                 m_Scrollbar.GetComponent<RectTransform>().sizeDelta = new Vector2(m_Theme.width, m_Theme.height);
 
                 ThemeUITool.SetImageTheme(m_Background, m_Theme.backgroundSprite, m_Theme.backgroundColor);

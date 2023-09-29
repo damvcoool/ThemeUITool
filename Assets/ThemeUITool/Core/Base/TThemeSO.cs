@@ -11,6 +11,7 @@ namespace ThemedUITool
     {
         internal static Sprite _UISprite;
         internal static Sprite _Background;
+        internal static Sprite _UIMask;
         internal static Sprite _InputFieldBackground;
         internal static Sprite _Knob;
         internal static Sprite _Checkmark;
@@ -34,6 +35,7 @@ namespace ThemedUITool
             _UISprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
             _Background = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
             _InputFieldBackground = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/InputFieldBackground.psd");
+            _UIMask = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
             _Knob = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
             _Checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Checkmark.psd");
             _FontAsset = TMP_Settings.defaultFontAsset;

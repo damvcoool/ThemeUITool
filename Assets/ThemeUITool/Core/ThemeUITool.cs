@@ -127,8 +127,8 @@ namespace ThemedUITool
         {
             if (parent != null) target.transform.SetParent(parent.transform, false);
 
-            target.GetComponent<RectTransform>().sizeDelta = size;
             target.GetComponent<RectTransform>().anchoredPosition3D = position;
+            target.GetComponent<RectTransform>().sizeDelta = size;
             target.GetComponent<RectTransform>().anchorMin = new Vector2(anchorMinMax.x, anchorMinMax.y);
             target.GetComponent<RectTransform>().anchorMax = new Vector2(anchorMinMax.z, anchorMinMax.w);
         }
