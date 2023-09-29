@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +15,7 @@ namespace ThemedUITool
         // Properties
         public TMP_InputField targetInputField { get => m_InputField; set => m_InputField = value; }
 
-        protected private override void Apply()
+        protected private override async void Apply()
         {
             if (m_Theme == null) m_Theme = Theme;
 
@@ -25,23 +28,39 @@ namespace ThemedUITool
                 ThemeUITool.SetTextTheme(m_InputField.placeholder.GetComponent<TMP_Text>(), m_Theme.placeholderSize, m_Theme.placeholderAsset, m_Theme.placeholderColor);
                 ThemeUITool.SetShadow(m_InputField.gameObject, m_Theme.addShadow.addShadow, m_Theme.addShadow.shadowOffset, m_Theme.addShadow.shadowColor);
 
-                if (m_Theme.multiline.multiline && m_InputField.verticalScrollbar != null)
+                m_InputField.textViewport.GetComponent<RectMask2D>().padding = m_Theme.textAreaPadding;
+                m_InputField.fontAsset = m_Theme.fontAsset;
+                m_InputField.colors = m_Theme.colorBlock;
+
+                if (m_Theme.multiline.multiline)
                 {
-                    m_InputField.verticalScrollbar.gameObject.SetActive(true);
-                    ScrollbarThemeSelector scrollbarThemeSelector = m_InputField.verticalScrollbar.GetComponent<ScrollbarThemeSelector>();
-                    scrollbarThemeSelector.Theme = m_Theme.multiline.profile;
-                    if (scrollbarThemeSelector.Theme != null)
+                    if (m_InputField.verticalScrollbar == null)
                     {
-                        scrollbarThemeSelector.ApplyTheme();
+                        GameObject vScrl = ThemeUIToolCreator.CreateScrollbar();
+                        vScrl.SetActive(false);
+                        ThemeUITool.SetRectTransformProperties(vScrl, new Vector4(1, 0, 1, 1), new Vector2(20, 0), new Vector3(-10, 0, 0), m_InputField.gameObject);
+                        m_InputField.verticalScrollbar = vScrl.GetComponent<Scrollbar>();
                     }
+
+                    if (m_InputField.verticalScrollbar != null)
+                    {
+                        ScrollbarThemeSelector scrollbarThemeSelector = m_InputField.verticalScrollbar.GetComponent<ScrollbarThemeSelector>();
+                        scrollbarThemeSelector.Theme = m_Theme.multiline.profile;
+
+                        if (scrollbarThemeSelector.Theme != null)
+                        {
+                            scrollbarThemeSelector.ApplyTheme();
+                        }
+                    }
+                    await Task.Delay(50);
+
+                    m_InputField.verticalScrollbar.gameObject.SetActive(true);
                 }
+
                 if (!m_Theme.multiline.multiline && m_InputField.verticalScrollbar != null)
                 {
                     m_InputField.verticalScrollbar.gameObject.SetActive(false);
                 }
-                    m_InputField.textViewport.GetComponent<RectMask2D>().padding = m_Theme.textAreaPadding;
-                m_InputField.fontAsset = m_Theme.fontAsset;
-                m_InputField.colors = m_Theme.colorBlock;
             }
         }
     }
