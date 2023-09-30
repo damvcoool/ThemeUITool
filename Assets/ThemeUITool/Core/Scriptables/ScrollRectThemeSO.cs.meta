@@ -3,7 +3,12 @@ guid: c83602f3cd1ae9141a95921176b1bed4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - viewportMask: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  - horizontalProfile: {fileID: 11400000, guid: 5c16af8b39b36544f98d976905f23fab,
+      type: 2}
+  - verticalProfile: {fileID: 11400000, guid: 15816f1d1ecb8d04986c7e8c2fdfaa0e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -8,11 +8,6 @@ namespace ThemedUITool
 {
     internal static class ThemeUIToolCreator
     {
-        enum Orientation
-        {
-            Vertical,
-            Horizontal
-        }
         internal static GameObject CreateButton()
         {
             GameObject go = new GameObject("Themed Button", typeof(CanvasRenderer), typeof(ButtonThemeSelector), typeof(Image), typeof(Button));
@@ -108,23 +103,27 @@ namespace ThemedUITool
         internal static GameObject CreateInputField()
         {
             GameObject go = new GameObject("Themed Input Field", typeof(CanvasRenderer), typeof(InputFieldThemeSelector), typeof(Image), typeof(TMP_InputField));
-            go.GetComponent<InputFieldThemeSelector>().targetInputField = go.GetComponent<TMP_InputField>();
+
+            TMP_InputField _InputField = go.GetComponent<TMP_InputField>();
+
+            go.GetComponent<InputFieldThemeSelector>().targetInputField = _InputField;
             go.GetComponent<Image>().type = Image.Type.Sliced;
 
             GameObject ta = new GameObject("TextArea", typeof(RectMask2D));
             ThemeUITool.SetRectTransformProperties(ta, new Vector4(0, 0, 1, 1), new Vector2(-20, -13), new Vector3(0, -0.5f, 0), go);
-            go.GetComponent<TMP_InputField>().textViewport = ta.GetComponent<RectTransform>();
+            _InputField.textViewport = ta.GetComponent<RectTransform>();
 
             GameObject p = new GameObject("Placeholder", typeof(TextMeshProUGUI));
+            TextMeshProUGUI p_Text = p.GetComponent<TextMeshProUGUI>();
             ThemeUITool.SetRectTransformProperties(p, new Vector4(0, 0, 1, 1), Vector2.zero, Vector3.zero, ta);
-            p.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Italic;
-            p.GetComponent<TextMeshProUGUI>().text = "Enter text...";
+            p_Text.fontStyle = FontStyles.Italic;
+            p_Text.text = "Enter text...";
 
             GameObject t = new GameObject("Text", typeof(TextMeshProUGUI));
             ThemeUITool.SetRectTransformProperties(t, new Vector4(0, 0, 1, 1), Vector2.zero, Vector3.zero, ta);
 
-            go.GetComponent<TMP_InputField>().textComponent = t.GetComponent<TextMeshProUGUI>();
-            go.GetComponent<TMP_InputField>().placeholder = p.GetComponent<TextMeshProUGUI>();
+            _InputField.textComponent = t.GetComponent<TextMeshProUGUI>();
+            _InputField.placeholder = p_Text;
 
             return go;
         }
@@ -168,9 +167,9 @@ namespace ThemedUITool
         }
         internal static GameObject CreateDropdown()
         {
-            GameObject go = new GameObject("Themed Dropdown");
+            GameObject go = new GameObject("Themed Dropdown", typeof(CanvasRenderer), typeof(DropdownThemeSelector), typeof(Image), typeof(TMP_Dropdown));
 
-            // Needs Implementation
+            // Needs more love
 
             return go;
         }

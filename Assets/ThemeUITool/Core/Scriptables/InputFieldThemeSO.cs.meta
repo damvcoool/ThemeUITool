@@ -3,7 +3,10 @@ guid: 9ec7c921e4993224382ae9a932ad0e96
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fieldBackground: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - placeholderAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

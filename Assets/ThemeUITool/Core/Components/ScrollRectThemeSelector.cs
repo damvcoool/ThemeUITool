@@ -28,13 +28,11 @@ namespace ThemedUITool
             {
                 m_ScrollRect.GetComponent<RectTransform>().sizeDelta = new Vector2(m_Theme.width, m_Theme.height);
 
-                m_Background.sprite = m_Theme.background;
-                m_Background.color = m_Theme.backgroundColor;
+                ThemeUITool.SetImageTheme(m_Background,m_Theme.background, m_Theme.backgroundColor);
+                ThemeUITool.SetImageTheme(m_ScrollRect.viewport.GetComponent<Image>(), m_Theme.viewportMask, m_Theme.viewportMaskColor);
 
                 m_ScrollRect.horizontal = m_Theme.enableHorizontal;
                 m_ScrollRect.vertical = m_Theme.enableVertical;
-
-                m_ScrollRect.viewport.GetComponent<Image>().sprite = m_Theme.viewportMask;
 
                 m_ScrollRect.movementType = m_Theme.contentMovement;
 
@@ -44,26 +42,31 @@ namespace ThemedUITool
                 m_ScrollRect.horizontalScrollbarSpacing = m_Theme.horizontalSpacing;
                 m_ScrollRect.verticalScrollbarSpacing = m_Theme.verticalSpacing;
 
-                if (m_ScrollRect.horizontalScrollbar.GetComponent<ScrollbarThemeSelector>())
+                if (m_ScrollRect.horizontalScrollbar != null && m_ScrollRect.horizontal)
                 {
-                    m_ScrollRect.horizontalScrollbar.GetComponent<ScrollbarThemeSelector>().Theme = m_Theme.horizontalProfile;
-                }
-                else
-                {
-                    m_ScrollRect.horizontalScrollbar.gameObject.AddComponent<ScrollbarThemeSelector>();
-                }
-
-                if (m_ScrollRect.verticalScrollbar.GetComponent<ScrollbarThemeSelector>())
-                {
-                    m_ScrollRect.verticalScrollbar.GetComponent<ScrollbarThemeSelector>().Theme = m_Theme.verticalProfile;
-                }
-                else
-                {
-                    m_ScrollRect.verticalScrollbar.gameObject.AddComponent<ScrollbarThemeSelector>();
+                    if (m_ScrollRect.horizontalScrollbar.GetComponent<ScrollbarThemeSelector>())
+                    {
+                        m_ScrollRect.horizontalScrollbar.GetComponent<ScrollbarThemeSelector>().Theme = m_Theme.horizontalProfile;
+                    }
+                    else
+                    {
+                        m_ScrollRect.horizontalScrollbar.gameObject.AddComponent<ScrollbarThemeSelector>();
+                    }
+                    m_ScrollRect.horizontalScrollbar.GetComponent<ScrollbarThemeSelector>().ApplyTheme();
                 }
 
-                m_ScrollRect.horizontalScrollbar.GetComponent<ScrollbarThemeSelector>().ApplyTheme();
-                m_ScrollRect.verticalScrollbar.GetComponent<ScrollbarThemeSelector>().ApplyTheme();
+                if (m_ScrollRect.verticalScrollbar != null && m_ScrollRect.vertical)
+                {
+                    if (m_ScrollRect.verticalScrollbar.GetComponent<ScrollbarThemeSelector>())
+                    {
+                        m_ScrollRect.verticalScrollbar.GetComponent<ScrollbarThemeSelector>().Theme = m_Theme.verticalProfile;
+                    }
+                    else
+                    {
+                        m_ScrollRect.verticalScrollbar.gameObject.AddComponent<ScrollbarThemeSelector>();
+                    }
+                    m_ScrollRect.verticalScrollbar.GetComponent<ScrollbarThemeSelector>().ApplyTheme();
+                }
             }
         }
     }

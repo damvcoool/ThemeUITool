@@ -15,9 +15,12 @@ namespace ThemedUITool
         internal static Sprite _InputFieldBackground;
         internal static Sprite _Knob;
         internal static Sprite _Checkmark;
+        internal static Sprite _DropdownArrow;
         internal static TMP_FontAsset _FontAsset;
         internal static ScrollbarThemeSO _hTheme;
         internal static ScrollbarThemeSO _vTheme;
+        internal static ToggleThemeSO _templateToggle;
+        internal static ScrollRectThemeSO _templateScrollRect;
 
         public event UnityAction OnThemeChanged = () => { };
         [NonSerialized] public bool _themeChanged = false;
@@ -38,9 +41,12 @@ namespace ThemedUITool
             _UIMask = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
             _Knob = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
             _Checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Checkmark.psd");
+            _DropdownArrow = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/DropdownArrow.psd");
             _FontAsset = TMP_Settings.defaultFontAsset;
             _hTheme = ThemeUITool.GetSpecificTheme<ScrollbarThemeSO>("DefaultHorizontalScrollbarTheme");
             _vTheme = ThemeUITool.GetSpecificTheme<ScrollbarThemeSO>("DefaultVerticalScrollbarTheme");
+            _templateToggle = ThemeUITool.GetSpecificTheme<ToggleThemeSO>("DefaultTemplateToggle");
+            _templateScrollRect = ThemeUITool.GetSpecificTheme<ScrollRectThemeSO>("DefaultTemplateScrolRect");
         }
     }
 }

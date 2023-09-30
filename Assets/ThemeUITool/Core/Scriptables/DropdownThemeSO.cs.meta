@@ -3,7 +3,11 @@ guid: ba160fe80aea62d4a846ca436da36661
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - dropdownImage: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  - captionFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - drowpdownArrow: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  - fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
