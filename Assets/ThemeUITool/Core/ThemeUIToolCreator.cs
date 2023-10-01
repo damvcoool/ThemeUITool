@@ -168,6 +168,15 @@ namespace ThemedUITool
         internal static GameObject CreateDropdown()
         {
             GameObject go = new GameObject("Themed Dropdown", typeof(CanvasRenderer), typeof(DropdownThemeSelector), typeof(Image), typeof(TMP_Dropdown));
+            TMP_Dropdown _dropdown = go.GetComponent<TMP_Dropdown>();
+
+            GameObject l = new GameObject("Label", typeof(TextMeshProUGUI));
+            ThemeUITool.SetRectTransformProperties(l, new Vector4(0, 0, 1, 1), new Vector2(0,0), new Vector3(0,0,0), go);
+            _dropdown.captionText = l.GetComponent<TextMeshProUGUI>();
+            _dropdown.captionText.alignment = TextAlignmentOptions.BaselineLeft;
+
+            GameObject a = new GameObject("Arrow", typeof(Image));
+            ThemeUITool.SetRectTransformProperties(a, new Vector4(1, 0.5f, 1, 0.5f), new Vector2(), new Vector3(), go);
 
             // Needs more love
 
