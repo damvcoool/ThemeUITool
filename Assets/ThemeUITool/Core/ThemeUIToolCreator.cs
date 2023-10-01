@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ namespace ThemedUITool
         internal static GameObject CreateButton()
         {
             GameObject go = new GameObject("Themed Button", typeof(CanvasRenderer), typeof(ButtonThemeSelector), typeof(Image), typeof(Button));
-            go.GetComponent<ButtonThemeSelector>().targetButton = go.GetComponent<Button>();
+            go.GetComponent<ButtonThemeSelector>().TargetButton = go.GetComponent<Button>();
             go.GetComponent<Image>().type = Image.Type.Sliced;
 
             var tx = new GameObject("Text (TMP)", typeof(TextMeshProUGUI));
@@ -19,7 +20,7 @@ namespace ThemedUITool
             tx.GetComponent<TextMeshProUGUI>().text = "Button";
             tx.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
 
-            go.GetComponent<ButtonThemeSelector>().buttonText = tx.GetComponent<TextMeshProUGUI>();
+            go.GetComponent<ButtonThemeSelector>().Text = tx.GetComponent<TextMeshProUGUI>();
 
             go.GetComponent<ButtonThemeSelector>().ApplyTheme();
 
@@ -28,12 +29,12 @@ namespace ThemedUITool
         internal static GameObject CreateSlider()
         {
             GameObject go = new GameObject("Themed Slider", typeof(RectTransform), typeof(SliderThemeSelector), typeof(Slider));
-            go.GetComponent<SliderThemeSelector>().targetSlider = go.GetComponent<Slider>();
+            go.GetComponent<SliderThemeSelector>().TargetSlider = go.GetComponent<Slider>();
 
             var bg = new GameObject("Background", typeof(CanvasRenderer), typeof(Image));
             ThemeUITool.SetRectTransformProperties(bg, new Vector4(0, 0.25f, 1, 0.75f), Vector2.zero, Vector3.zero, go);
             bg.GetComponent<Image>().type = Image.Type.Sliced;
-            go.GetComponent<SliderThemeSelector>().sliderBackground = bg.GetComponent<Image>();
+            go.GetComponent<SliderThemeSelector>().Background = bg.GetComponent<Image>();
 
             var fa = new GameObject("Fill Area", typeof(RectTransform));
             ThemeUITool.SetRectTransformProperties(fa, new Vector4(0, 0.25f, 1, 0.75f), new Vector2(-20, 0), new Vector3(-5f, 0, 0), go);
@@ -60,8 +61,8 @@ namespace ThemedUITool
         internal static GameObject CreateScrollbar()
         {
             GameObject go = new GameObject("Themed Scrollbar", typeof(RectTransform), typeof(ScrollbarThemeSelector), typeof(Image), typeof(Scrollbar));
-            go.GetComponent<ScrollbarThemeSelector>().scrollbarBackground = go.GetComponent<Image>();
-            go.GetComponent<ScrollbarThemeSelector>().targetScrollbar = go.GetComponent<Scrollbar>();
+            go.GetComponent<ScrollbarThemeSelector>().Background = go.GetComponent<Image>();
+            go.GetComponent<ScrollbarThemeSelector>().TargetScrollbar = go.GetComponent<Scrollbar>();
             go.GetComponent<Image>().type = Image.Type.Sliced;
 
             var sa = new GameObject("Sliding Area", typeof(RectTransform));
@@ -96,7 +97,7 @@ namespace ThemedUITool
             var lbl = new GameObject("Label", typeof(CanvasRenderer), typeof(TextMeshProUGUI));
             ThemeUITool.SetRectTransformProperties(lbl, new Vector4(0, 0, 1, 1), new Vector2(-28, -3), new Vector3(9, -0.5f, 0), go);
             lbl.GetComponent<TextMeshProUGUI>().text = "Toggle";
-            go.GetComponent<ToggleThemeSelector>().sliderLabel = lbl.GetComponent<TextMeshProUGUI>();
+            go.GetComponent<ToggleThemeSelector>().Label = lbl.GetComponent<TextMeshProUGUI>();
 
             return go;
         }
@@ -106,7 +107,7 @@ namespace ThemedUITool
 
             TMP_InputField _InputField = go.GetComponent<TMP_InputField>();
 
-            go.GetComponent<InputFieldThemeSelector>().targetInputField = _InputField;
+            go.GetComponent<InputFieldThemeSelector>().TargetInputField = _InputField;
             go.GetComponent<Image>().type = Image.Type.Sliced;
 
             GameObject ta = new GameObject("TextArea", typeof(RectMask2D));
@@ -134,8 +135,8 @@ namespace ThemedUITool
             ScrollRect _scrollRect = go.GetComponent<ScrollRect>();
             ScrollRectThemeSelector _scrollbarThemeSelector = go.GetComponent<ScrollRectThemeSelector>();
 
-            _scrollbarThemeSelector.targetScrollRect = _scrollRect;
-            _scrollbarThemeSelector.background = go.GetComponent<Image>();
+            _scrollbarThemeSelector.TargetScrollRect = _scrollRect;
+            _scrollbarThemeSelector.Background = go.GetComponent<Image>();
             go.GetComponent<Image>().type = Image.Type.Sliced;
 
             GameObject v = new GameObject("Viewport", typeof(Image), typeof(Mask));
@@ -147,12 +148,12 @@ namespace ThemedUITool
 
             GameObject c = new GameObject("Content", typeof(RectTransform));
             c.GetComponent<RectTransform>().pivot = Vector2.up;
-            ThemeUITool.SetRectTransformProperties(c, new Vector4(0, 1, 1, 1), new Vector2(0,300), Vector3.zero, v);
+            ThemeUITool.SetRectTransformProperties(c, new Vector4(0, 1, 1, 1), new Vector2(0, 300), Vector3.zero, v);
             _scrollRect.content = c.GetComponent<RectTransform>();
 
             GameObject sh = CreateScrollbar();
             sh.name = "Themed Scrollbar Horizontal";
-            ThemeUITool.SetRectTransformProperties(sh, new Vector4(0, 0, 1, 0), new Vector2(-20,0), Vector3.zero, go);
+            ThemeUITool.SetRectTransformProperties(sh, new Vector4(0, 0, 1, 0), new Vector2(-20, 0), Vector3.zero, go);
             sh.GetComponent<RectTransform>().pivot = Vector2.zero;
             _scrollRect.horizontalScrollbar = sh.GetComponent<Scrollbar>();
 
@@ -169,17 +170,41 @@ namespace ThemedUITool
         {
             GameObject go = new GameObject("Themed Dropdown", typeof(CanvasRenderer), typeof(DropdownThemeSelector), typeof(Image), typeof(TMP_Dropdown));
             TMP_Dropdown _dropdown = go.GetComponent<TMP_Dropdown>();
+            DropdownThemeSelector _selector = go.GetComponent<DropdownThemeSelector>();
+            go.GetComponent<Image>().type = Image.Type.Sliced;
 
             GameObject l = new GameObject("Label", typeof(TextMeshProUGUI));
-            ThemeUITool.SetRectTransformProperties(l, new Vector4(0, 0, 1, 1), new Vector2(0,0), new Vector3(0,0,0), go);
+            ThemeUITool.SetRectTransformProperties(l, new Vector4(0, 0, 1, 1), new Vector2(-35, -13), new Vector3(-7.5f, -0.5f, 0), go);
             _dropdown.captionText = l.GetComponent<TextMeshProUGUI>();
-            _dropdown.captionText.alignment = TextAlignmentOptions.BaselineLeft;
+            _dropdown.captionText.alignment = TextAlignmentOptions.Left | TextAlignmentOptions.Center;
 
             GameObject a = new GameObject("Arrow", typeof(Image));
-            ThemeUITool.SetRectTransformProperties(a, new Vector4(1, 0.5f, 1, 0.5f), new Vector2(), new Vector3(), go);
+            ThemeUITool.SetRectTransformProperties(a, new Vector4(1, 0.5f, 1, 0.5f), new Vector2(20, 20), new Vector3(-15, 0, 0), go);
 
-            // Needs more love
+            GameObject t = CreateScrollRect();
+            t.name = "Template";
+            ScrollRect _scrollrect = t.GetComponent<ScrollRect>();
+            t.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
+            ThemeUITool.SetRectTransformProperties(t, new Vector4(0, 0, 1, 0), new Vector2(0, 150), new Vector3(0, 2, 0), go);
+            _scrollrect.content.sizeDelta = new Vector2(0, 28);
+            _dropdown.template = t.GetComponent<RectTransform>();
 
+            GameObject i = CreateToggle();
+            Toggle _toggle = i.GetComponent<Toggle>();
+            ToggleThemeSelector _toggleSelector = i.GetComponent<ToggleThemeSelector>();
+            i.name = "Item";
+            ThemeUITool.SetRectTransformProperties(i, new Vector4(0, 0.5f, 1, 0.5f), new Vector2(0, 20), new Vector3(), t.GetComponent<ScrollRect>().content.gameObject);
+            ThemeUITool.SetRectTransformProperties(_toggle.image.gameObject, new Vector4(0, 0, 1, 1), Vector2.zero, Vector3.zero);
+            ThemeUITool.SetRectTransformProperties(_toggle.graphic.gameObject, new Vector4(0, 0.5f, 0, 0.5f), new Vector2(20, 20), new Vector3(10,0,0), _toggle.gameObject);
+            _toggleSelector.Label.gameObject.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Left | TextAlignmentOptions.Center; ;
+            _dropdown.itemText = i.GetComponent<ToggleThemeSelector>().Label;
+
+            _selector.TargetDropdown = _dropdown;
+            _selector.Arrow = a.GetComponent<Image>();
+            _selector.Item = i.GetComponent<ToggleThemeSelector>();
+            _dropdown.AddOptions(new List<string> { "Option A", "Option B", "Option C" });
+
+            t.SetActive(false);
             return go;
         }
     }

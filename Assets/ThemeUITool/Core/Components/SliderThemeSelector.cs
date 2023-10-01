@@ -16,8 +16,8 @@ namespace ThemedUITool
 
         // Properties
         //new public SliderThemeSO Theme { get => m_Theme; set => m_Theme = value; }
-        public Slider targetSlider { get => m_Slider; set => m_Slider = value; }
-        public Image sliderBackground { get => m_Background; set => m_Background = value; }
+        public Slider TargetSlider { get => m_Slider; set => m_Slider = value; }
+        public Image Background { get => m_Background; set => m_Background = value; }
 
         protected private override void Apply()
         {

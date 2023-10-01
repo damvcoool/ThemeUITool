@@ -15,8 +15,8 @@ namespace ThemedUITool
         [SerializeField] private Image m_Background;
 
         //// Properties
-        public ScrollRect targetScrollRect { get => m_ScrollRect; set => m_ScrollRect = value; }
-        public Image background { get => m_Background; set => m_Background = value; }
+        public ScrollRect TargetScrollRect { get => m_ScrollRect; set => m_ScrollRect = value; }
+        public Image Background { get => m_Background; set => m_Background = value; }
 
         protected private override void Apply()
         {

@@ -15,9 +15,9 @@ namespace ThemedUITool
         private ScrollRectThemeSelector m_Template;
 
         // Properties
-        public TMP_Dropdown targetDropdown { get => m_Dropdown; set => m_Dropdown = value; }
-        public Image dropdownArrow { get => m_Arrow; set => m_Arrow = value; }
-        public ToggleThemeSelector item { get => m_Item; set => m_Item = value; }
+        public TMP_Dropdown TargetDropdown { get => m_Dropdown; set => m_Dropdown = value; }
+        public Image Arrow { get => m_Arrow; set => m_Arrow = value; }
+        public ToggleThemeSelector Item { get => m_Item; set => m_Item = value; }
         private protected override void Apply()
         {
             if (m_Theme == null) m_Theme = Theme;

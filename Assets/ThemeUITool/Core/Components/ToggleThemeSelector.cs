@@ -15,7 +15,7 @@ namespace ThemedUITool
 
         // Properties
         public Toggle targetToggle { get => m_Toggle; set => m_Toggle = value; }
-        public TMP_Text sliderLabel { get => m_Label; set => m_Label = value; }
+        public TMP_Text Label { get => m_Label; set => m_Label = value; }
 
         // Private Methods
         protected private override void Apply()

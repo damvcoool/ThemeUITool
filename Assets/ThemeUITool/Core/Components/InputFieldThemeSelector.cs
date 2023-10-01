@@ -15,7 +15,7 @@ namespace ThemedUITool
         [SerializeField] private TMP_InputField m_InputField;
 
         // Properties
-        public TMP_InputField targetInputField { get => m_InputField; set => m_InputField = value; }
+        public TMP_InputField TargetInputField { get => m_InputField; set => m_InputField = value; }
 
         protected private override async void Apply()
         {

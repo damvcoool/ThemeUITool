@@ -14,8 +14,8 @@ namespace ThemedUITool
         [SerializeField] private TMP_Text m_ButtonText;
 
         // Properties
-        public Button targetButton { get => m_Button; set => m_Button = value; }
-        public TMP_Text buttonText { get => m_ButtonText; set => m_ButtonText = value; }
+        public Button TargetButton { get => m_Button; set => m_Button = value; }
+        public TMP_Text Text { get => m_ButtonText; set => m_ButtonText = value; }
 
         protected private override void Apply()
         {
