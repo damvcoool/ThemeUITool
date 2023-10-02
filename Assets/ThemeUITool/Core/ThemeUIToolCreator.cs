@@ -196,12 +196,15 @@ namespace ThemedUITool
             ThemeUITool.SetRectTransformProperties(i, new Vector4(0, 0.5f, 1, 0.5f), new Vector2(0, 20), new Vector3(), t.GetComponent<ScrollRect>().content.gameObject);
             ThemeUITool.SetRectTransformProperties(_toggle.image.gameObject, new Vector4(0, 0, 1, 1), Vector2.zero, Vector3.zero);
             ThemeUITool.SetRectTransformProperties(_toggle.graphic.gameObject, new Vector4(0, 0.5f, 0, 0.5f), new Vector2(20, 20), new Vector3(10,0,0), _toggle.gameObject);
+            ThemeUITool.SetRectTransformProperties(_toggleSelector.Label.gameObject, new Vector4(0,0,1,1), new Vector2(-30,-3), new Vector3(5,-0.5f,0));
+            
             _toggleSelector.Label.gameObject.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Left | TextAlignmentOptions.Center; ;
             _dropdown.itemText = i.GetComponent<ToggleThemeSelector>().Label;
 
             _selector.TargetDropdown = _dropdown;
             _selector.Arrow = a.GetComponent<Image>();
             _selector.Item = i.GetComponent<ToggleThemeSelector>();
+            _toggleSelector.Label.text = "Option A";
             _dropdown.AddOptions(new List<string> { "Option A", "Option B", "Option C" });
 
             t.SetActive(false);
