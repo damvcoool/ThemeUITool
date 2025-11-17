@@ -17,7 +17,7 @@ namespace ThemedUITool
         public Button TargetButton { get => m_Button; set => m_Button = value; }
         public TMP_Text Text { get => m_ButtonText; set => m_ButtonText = value; }
 
-        protected private override void Apply()
+        private protected override void Apply()
         {
             if (m_Theme == null) m_Theme = Theme;
 

@@ -15,7 +15,7 @@ namespace ThemedUITool
         [SerializeField] internal Sprite dropdownImage = _UISprite;
         [SerializeField] internal ColorBlock colorBlock = ColorBlock.defaultColorBlock;
         [SerializeField] internal float captionFontSize = 14;
-        [SerializeField] internal Sprite drowpdownArrow = _DropdownArrow;
+        [SerializeField] internal Sprite dropdownArrow = _DropdownArrow;
         [SerializeField] internal Color dropdownArrowColor = Color.white;
 
         [Header("Caption Text Properties")]

@@ -21,6 +21,12 @@ namespace ThemedUITool
         // Public Methods
         public virtual void ApplyTheme()
         {
+            if (m_Theme == null)
+            {
+                Debug.LogWarning($"Theme is not assigned on {GetType().Name}", this);
+                return;
+            }
+            
             Validate = false;
             Register();
             Apply();
@@ -32,11 +38,17 @@ namespace ThemedUITool
         }
         protected void OnEnable()
         {
-            m_Theme.OnThemeChanged += ApplyTheme;
+            if (m_Theme != null)
+            {
+                m_Theme.OnThemeChanged += ApplyTheme;
+            }
         }
         protected void OnDisable()
         {
-            m_Theme.OnThemeChanged -= ApplyTheme;
+            if (m_Theme != null)
+            {
+                m_Theme.OnThemeChanged -= ApplyTheme;
+            }
         }
         protected void Awake()
         {
@@ -44,15 +56,18 @@ namespace ThemedUITool
         }
         protected void Register()
         {
-            m_Theme.OnThemeChanged -= ApplyTheme;
-            m_Theme.OnThemeChanged += ApplyTheme;
+            if (m_Theme != null)
+            {
+                m_Theme.OnThemeChanged -= ApplyTheme;
+                m_Theme.OnThemeChanged += ApplyTheme;
+            }
         }
 
         protected void WarningEmptyFields()
         {
             Debug.LogWarning($"One or more fields on the {this.GetType().Name} component are empty has not been configured", this);
         }
-        protected private abstract void Apply();
+        private protected abstract void Apply();
     }
 }
 #endif

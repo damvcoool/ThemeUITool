@@ -12,114 +12,61 @@ namespace ThemedUITool
     public static class ThemeUITool
     {
         #region GetThemes
-        public static TThemeSO[] GetAllThemes(Type type)
+        
+        /// <summary>
+        /// Helper method to load all TThemeSO assets from the project
+        /// </summary>
+        private static TThemeSO[] LoadAllThemeAssets()
         {
-            // Get all TThemeSO assets in the project
             var tThemes = AssetDatabase.FindAssets("t:TThemeSO");
             var themeObjects = new TThemeSO[tThemes.Length];
 
-            // Convert asset GUIDs to TThemeSO objects
             for (int i = 0; i < tThemes.Length; i++)
             {
                 var assetPath = AssetDatabase.GUIDToAssetPath(tThemes[i]);
                 themeObjects[i] = AssetDatabase.LoadAssetAtPath<TThemeSO>(assetPath);
             }
-
-            // Filter themeObjects based on the specific derived type
-            var derivedType = type;
-            themeObjects = Array.FindAll(themeObjects, theme => derivedType.IsAssignableFrom(theme.GetType()));
 
             return themeObjects;
         }
+
+        public static TThemeSO[] GetAllThemes(Type type)
+        {
+            var themeObjects = LoadAllThemeAssets();
+            return Array.FindAll(themeObjects, theme => type.IsAssignableFrom(theme.GetType()));
+        }
+        
         public static T[] GetAllThemes<T>() where T : TThemeSO
         {
-            Type type = typeof(TThemeSO);
-            // Get all TThemeSO assets in the project
-            var tThemes = AssetDatabase.FindAssets("t:TThemeSO");
-            var themeObjects = new TThemeSO[tThemes.Length];
-
-            // Convert asset GUIDs to TThemeSO objects
-            for (int i = 0; i < tThemes.Length; i++)
-            {
-                var assetPath = AssetDatabase.GUIDToAssetPath(tThemes[i]);
-                themeObjects[i] = AssetDatabase.LoadAssetAtPath<TThemeSO>(assetPath);
-            }
-
-            // Filter themeObjects based on the specific derived type
-            var derivedType = type;
-            themeObjects = Array.FindAll(themeObjects, theme => derivedType.IsAssignableFrom(theme.GetType()));
-
+            Type type = typeof(T);
+            var themeObjects = LoadAllThemeAssets();
+            themeObjects = Array.FindAll(themeObjects, theme => type.IsAssignableFrom(theme.GetType()));
             return themeObjects.Cast<T>().ToArray();
         }
+        
         public static TThemeSO GetDefaultTheme(Type type)
         {
-            // Get all TThemeSO assets in the project
-            var tThemes = AssetDatabase.FindAssets("t:TThemeSO");
-            var themeObjects = new TThemeSO[tThemes.Length];
-
-            // Convert asset GUIDs to TThemeSO objects
-            for (int i = 0; i < tThemes.Length; i++)
-            {
-                var assetPath = AssetDatabase.GUIDToAssetPath(tThemes[i]);
-                themeObjects[i] = AssetDatabase.LoadAssetAtPath<TThemeSO>(assetPath);
-            }
-
-            // Filter themeObjects based on the specific derived type
-            var derivedType = type;
-            themeObjects = Array.FindAll(themeObjects, theme => derivedType.IsAssignableFrom(theme.GetType()));
+            var themeObjects = LoadAllThemeAssets();
+            themeObjects = Array.FindAll(themeObjects, theme => type.IsAssignableFrom(theme.GetType()));
             string name = "Default" + type.Name;
             return themeObjects.FirstOrDefault(theme => theme.name.Equals(name.Substring(0, name.Length - 2)));
         }
+        
         public static T GetDefaultTheme<T>() where T : TThemeSO
         {
-            // Determine the type at runtime
             Type type = typeof(T);
-
-            // Get all TThemeSO assets in the project
-            var tThemes = AssetDatabase.FindAssets("t:TThemeSO");
-            var themeObjects = new TThemeSO[tThemes.Length];
-
-            // Convert asset GUIDs to TThemeSO objects
-            for (int i = 0; i < tThemes.Length; i++)
-            {
-                var assetPath = AssetDatabase.GUIDToAssetPath(tThemes[i]);
-                themeObjects[i] = AssetDatabase.LoadAssetAtPath<TThemeSO>(assetPath);
-            }
-
-            // Filter themeObjects based on the specific derived type
+            var themeObjects = LoadAllThemeAssets();
             themeObjects = Array.FindAll(themeObjects, theme => type.IsAssignableFrom(theme.GetType()));
-
-            // Create the default Theme name based on the type
             string name = "Default" + type.Name;
-
-            // Find and return the default Theme
             return themeObjects.FirstOrDefault(theme => theme.name.Equals(name.Substring(0, name.Length - 2))) as T;
         }
-        public static T GetSpecificTheme<T>(string Theme) where T : TThemeSO
+        
+        public static T GetSpecificTheme<T>(string themeName) where T : TThemeSO
         {
-            // Determine the type at runtime
             Type type = typeof(T);
-
-            // Get all TThemeSO assets in the project
-            var tThemes = AssetDatabase.FindAssets("t:TThemeSO");
-            var themeObjects = new TThemeSO[tThemes.Length];
-
-            // Convert asset GUIDs to TThemeSO objects
-            for (int i = 0; i < tThemes.Length; i++)
-            {
-                var assetPath = AssetDatabase.GUIDToAssetPath(tThemes[i]);
-                themeObjects[i] = AssetDatabase.LoadAssetAtPath<TThemeSO>(assetPath);
-            }
-
-            // Filter themeObjects based on the specific derived type
+            var themeObjects = LoadAllThemeAssets();
             themeObjects = Array.FindAll(themeObjects, theme => type.IsAssignableFrom(theme.GetType()));
-
-            // Create the default Theme name based on the type
-            string name = "Default" + type.Name;
-
-            // Find and return the default Theme
-           // Debug.Log($"{themeObjects.FirstOrDefault(theme => theme.name.Equals(Theme))} or {themeObjects.Equals(Theme)}");
-            return themeObjects.FirstOrDefault(theme => theme.name.Equals(Theme)) as T;
+            return themeObjects.FirstOrDefault(theme => theme.name.Equals(themeName)) as T;
         }
         #endregion
         #region SetProperties

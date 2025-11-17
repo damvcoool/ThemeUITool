@@ -17,7 +17,7 @@ namespace ThemedUITool
         // Properties
         public TMP_InputField TargetInputField { get => m_InputField; set => m_InputField = value; }
 
-        protected private override async void Apply()
+        private protected override async void Apply()
         {
             if (m_Theme == null) m_Theme = Theme;
 
