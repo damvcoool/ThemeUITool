@@ -7,6 +7,10 @@ using UnityEngine.Events;
 
 namespace ThemedUITool
 {
+    /// <summary>
+    /// Base class for all theme ScriptableObjects. Provides common functionality for theme management
+    /// and event handling when theme properties change.
+    /// </summary>
     public abstract class TThemeSO : ScriptableObject
     {
         internal static Sprite _UISprite;
@@ -24,6 +28,10 @@ namespace ThemedUITool
 
         public event UnityAction OnThemeChanged = () => { };
         [NonSerialized] public bool _themeChanged = false;
+        
+        /// <summary>
+        /// Invokes the OnThemeChanged event to notify all theme selectors that the theme has changed
+        /// </summary>
         public virtual void ThemeChanged()
         {
             _themeChanged = false;
