@@ -1,0 +1,30 @@
+{
+  "name": "com.damvcoool.themeuetool",
+  "version": "1.0.0",
+  "displayName": "Theme UI Tool",
+  "description": "A Unity Editor tool for applying consistent themes to Unity UI components. Create reusable theme profiles for Buttons, Sliders, Scrollbars, Toggles, Input Fields, Dropdowns, and Scroll Views.",
+  "unity": "2021.3",
+  "keywords": [
+    "ui",
+    "theme",
+    "styling",
+    "editor",
+    "tools",
+    "ugui"
+  ],
+  "author": {
+    "name": "damvcoool",
+    "url": "https://github.com/damvcoool"
+  },
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6",
+    "com.unity.ugui": "1.0.0"
+  },
+  "samples": [
+    {
+      "displayName": "Sample Scene",
+      "description": "A sample scene demonstrating themed UI components",
+      "path": "Samples~/SampleScene"
+    }
+  ]
+}

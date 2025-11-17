@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace ThemedUITool
 {
+    /// <summary>
+    /// Base class for all theme selector components. Automatically applies themes to UI elements
+    /// and subscribes to theme change events for automatic updates.
+    /// </summary>
+    /// <typeparam name="T">The type of theme this selector uses</typeparam>
     [ExecuteAlways]
     public abstract class TThemeSelector<T> : MonoBehaviour where T : TThemeSO
     {
@@ -11,7 +16,9 @@ namespace ThemedUITool
         [SerializeField] private protected T m_Theme;
 
         // Properties
-//        public virtual T Theme { get; set; }
+        /// <summary>
+        /// Gets or sets the theme asset used by this selector
+        /// </summary>
         public virtual T Theme { get => m_Theme; set => m_Theme = value; }
 
 
@@ -19,8 +26,18 @@ namespace ThemedUITool
         [NonSerialized] public bool Validate = false;
 
         // Public Methods
+        /// <summary>
+        /// Applies the current theme to the UI element. This method is automatically called
+        /// when the theme changes or when the component is validated.
+        /// </summary>
         public virtual void ApplyTheme()
         {
+            if (m_Theme == null)
+            {
+                Debug.LogWarning($"Theme is not assigned on {GetType().Name}", this);
+                return;
+            }
+            
             Validate = false;
             Register();
             Apply();
@@ -32,11 +49,17 @@ namespace ThemedUITool
         }
         protected void OnEnable()
         {
-            m_Theme.OnThemeChanged += ApplyTheme;
+            if (m_Theme != null)
+            {
+                m_Theme.OnThemeChanged += ApplyTheme;
+            }
         }
         protected void OnDisable()
         {
-            m_Theme.OnThemeChanged -= ApplyTheme;
+            if (m_Theme != null)
+            {
+                m_Theme.OnThemeChanged -= ApplyTheme;
+            }
         }
         protected void Awake()
         {
@@ -44,15 +67,22 @@ namespace ThemedUITool
         }
         protected void Register()
         {
-            m_Theme.OnThemeChanged -= ApplyTheme;
-            m_Theme.OnThemeChanged += ApplyTheme;
+            if (m_Theme != null)
+            {
+                m_Theme.OnThemeChanged -= ApplyTheme;
+                m_Theme.OnThemeChanged += ApplyTheme;
+            }
         }
 
         protected void WarningEmptyFields()
         {
-            Debug.LogWarning($"One or more fields on the {this.GetType().Name} component are empty has not been configured", this);
+            Debug.LogWarning($"One or more fields on the {GetType().Name} component are empty or have not been configured", this);
         }
-        protected private abstract void Apply();
+        
+        /// <summary>
+        /// Abstract method that derived classes must implement to apply theme properties to their specific UI elements
+        /// </summary>
+        private protected abstract void Apply();
     }
 }
 #endif

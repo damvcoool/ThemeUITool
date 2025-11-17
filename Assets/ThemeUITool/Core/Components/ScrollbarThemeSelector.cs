@@ -17,7 +17,7 @@ namespace ThemedUITool
         public Scrollbar TargetScrollbar { get => m_Scrollbar; set => m_Scrollbar = value; }
         public Image Background { get => m_Background; set => m_Background = value; }
 
-        protected private override void Apply()
+        private protected override void Apply()
         {
             if (m_Theme == null & Theme != null) m_Theme = Theme;
 

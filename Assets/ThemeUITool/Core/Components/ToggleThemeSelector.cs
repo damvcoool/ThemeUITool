@@ -18,7 +18,7 @@ namespace ThemedUITool
         public TMP_Text Label { get => m_Label; set => m_Label = value; }
 
         // Private Methods
-        protected private override void Apply()
+        private protected override void Apply()
         {
             if (m_Theme == null & Theme != null) m_Theme = Theme;
             if(m_Toggle ==  null || m_Label == null) WarningEmptyFields();

@@ -18,7 +18,7 @@ namespace ThemedUITool
         public ScrollRect TargetScrollRect { get => m_ScrollRect; set => m_ScrollRect = value; }
         public Image Background { get => m_Background; set => m_Background = value; }
 
-        protected private override void Apply()
+        private protected override void Apply()
         {
             if (m_Theme == null) m_Theme = Theme;
 

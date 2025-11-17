@@ -26,7 +26,7 @@ namespace ThemedUITool
 
             m_Dropdown.GetComponent<RectTransform>().sizeDelta = new Vector2(m_Theme.width, m_Theme.height);
             ThemeUITool.SetImageTheme(m_Dropdown.image, m_Theme.dropdownImage, m_Theme.colorBlock.normalColor);
-            ThemeUITool.SetImageTheme(m_Arrow, m_Theme.drowpdownArrow, m_Theme.dropdownArrowColor);
+            ThemeUITool.SetImageTheme(m_Arrow, m_Theme.dropdownArrow, m_Theme.dropdownArrowColor);
             ThemeUITool.SetTextTheme(m_Dropdown.captionText, m_Theme.captionFontSize, m_Theme.captionFontAsset, m_Theme.captionFontColor);
 
             m_Item.Theme = m_Theme.templateItem;

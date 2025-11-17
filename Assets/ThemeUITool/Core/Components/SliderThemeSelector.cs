@@ -19,7 +19,7 @@ namespace ThemedUITool
         public Slider TargetSlider { get => m_Slider; set => m_Slider = value; }
         public Image Background { get => m_Background; set => m_Background = value; }
 
-        protected private override void Apply()
+        private protected override void Apply()
         {
             if (m_Theme == null & Theme != null) m_Theme = Theme;
             if (m_Slider == null || m_Background == null) WarningEmptyFields();
