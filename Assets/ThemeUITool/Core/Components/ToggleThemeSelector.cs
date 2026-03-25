@@ -14,14 +14,13 @@ namespace ThemedUITool
         [SerializeField] private TMP_Text m_Label;
 
         // Properties
-        public Toggle targetToggle { get => m_Toggle; set => m_Toggle = value; }
+        public Toggle TargetToggle { get => m_Toggle; set => m_Toggle = value; }
         public TMP_Text Label { get => m_Label; set => m_Label = value; }
 
         // Private Methods
         private protected override void Apply()
         {
-            if (m_Theme == null & Theme != null) m_Theme = Theme;
-            if(m_Toggle ==  null || m_Label == null) WarningEmptyFields();
+            if (m_Toggle == null || m_Label == null) WarningEmptyFields();
 
             if (m_Toggle != null)
             {

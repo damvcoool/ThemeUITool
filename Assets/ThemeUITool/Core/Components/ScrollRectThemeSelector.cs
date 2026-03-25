@@ -20,8 +20,6 @@ namespace ThemedUITool
 
         private protected override void Apply()
         {
-            if (m_Theme == null) m_Theme = Theme;
-
             if (m_ScrollRect == null || m_Background == null) WarningEmptyFields();
 
             if (m_ScrollRect != null)
@@ -35,6 +33,7 @@ namespace ThemedUITool
                 m_ScrollRect.vertical = m_Theme.enableVertical;
 
                 m_ScrollRect.movementType = m_Theme.contentMovement;
+                m_ScrollRect.inertia = m_Theme.useInertia;
 
                 m_ScrollRect.horizontalScrollbarVisibility = m_Theme.horizontalVisibility;
                 m_ScrollRect.verticalScrollbarVisibility = m_Theme.verticalVisibility;

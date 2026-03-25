@@ -28,7 +28,7 @@ Thank you for your interest in contributing to ThemeUITool! This document provid
 - Use Unity's serialization attributes appropriately (`[SerializeField]`, `[HideInInspector]`, etc.)
 - Follow Unity's component-based architecture
 - Use TextMesh Pro for all text components
-- Ensure compatibility with Unity 2021.3 or later
+- Ensure compatibility with Unity 6 (6000.0) or later
 
 ### Testing
 

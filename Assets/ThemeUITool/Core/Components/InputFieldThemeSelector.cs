@@ -1,7 +1,7 @@
 #if UNITY_EDITOR
 
-using System.Threading.Tasks;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,10 +17,8 @@ namespace ThemedUITool
         // Properties
         public TMP_InputField TargetInputField { get => m_InputField; set => m_InputField = value; }
 
-        private protected override async void Apply()
+        private protected override void Apply()
         {
-            if (m_Theme == null) m_Theme = Theme;
-
             if (m_InputField == null) WarningEmptyFields();
 
             if (m_InputField != null)
@@ -56,9 +54,13 @@ namespace ThemedUITool
                             scrollbarThemeSelector.ApplyTheme();
                         }
                     }
-                    await Task.Delay(50);
 
-                    m_InputField.verticalScrollbar.gameObject.SetActive(true);
+                    TMP_InputField capturedInputField = m_InputField;
+                    EditorApplication.delayCall += () =>
+                    {
+                        if (capturedInputField != null && capturedInputField.verticalScrollbar != null)
+                            capturedInputField.verticalScrollbar.gameObject.SetActive(true);
+                    };
                 }
 
                 if (!m_Theme.multiline.multiline && m_InputField.verticalScrollbar != null)

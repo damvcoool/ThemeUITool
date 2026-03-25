@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "displayName": "Theme UI Tool",
   "description": "A Unity Editor tool for applying consistent themes to Unity UI components. Create reusable theme profiles for Buttons, Sliders, Scrollbars, Toggles, Input Fields, Dropdowns, and Scroll Views.",
-  "unity": "2021.3",
+  "unity": "6000.0",
   "keywords": [
     "ui",
     "theme",

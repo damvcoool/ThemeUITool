@@ -57,6 +57,7 @@ namespace ThemedUITool
         
         /// <summary>
         /// Gets the default theme for the specified type. The default theme must be named "Default{TypeName}"
+        /// where TypeName is the type name with the trailing "SO" suffix removed (e.g. "ButtonThemeSO" → "DefaultButtonTheme").
         /// </summary>
         /// <param name="type">The type of theme to retrieve</param>
         /// <returns>The default theme, or null if not found</returns>
@@ -64,12 +65,14 @@ namespace ThemedUITool
         {
             var themeObjects = LoadAllThemeAssets();
             themeObjects = Array.FindAll(themeObjects, theme => type.IsAssignableFrom(theme.GetType()));
-            string name = "Default" + type.Name;
-            return themeObjects.FirstOrDefault(theme => theme.name.Equals(name.Substring(0, name.Length - 2)));
+            string typeName = type.Name.EndsWith("SO") ? type.Name[..^2] : type.Name;
+            string defaultName = "Default" + typeName;
+            return themeObjects.FirstOrDefault(theme => theme.name.Equals(defaultName));
         }
         
         /// <summary>
         /// Gets the default theme for the specified type. The default theme must be named "Default{TypeName}"
+        /// where TypeName is the type name with the trailing "SO" suffix removed (e.g. "ButtonThemeSO" → "DefaultButtonTheme").
         /// </summary>
         /// <typeparam name="T">The type of theme to retrieve</typeparam>
         /// <returns>The default theme, or null if not found</returns>
@@ -78,8 +81,9 @@ namespace ThemedUITool
             Type type = typeof(T);
             var themeObjects = LoadAllThemeAssets();
             themeObjects = Array.FindAll(themeObjects, theme => type.IsAssignableFrom(theme.GetType()));
-            string name = "Default" + type.Name;
-            return themeObjects.FirstOrDefault(theme => theme.name.Equals(name.Substring(0, name.Length - 2))) as T;
+            string typeName = type.Name.EndsWith("SO") ? type.Name[..^2] : type.Name;
+            string defaultName = "Default" + typeName;
+            return themeObjects.FirstOrDefault(theme => theme.name.Equals(defaultName)) as T;
         }
         
         /// <summary>
