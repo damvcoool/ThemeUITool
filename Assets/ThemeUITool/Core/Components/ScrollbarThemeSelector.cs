@@ -19,8 +19,6 @@ namespace ThemedUITool
 
         private protected override void Apply()
         {
-            if (m_Theme == null & Theme != null) m_Theme = Theme;
-
             if (m_Scrollbar == null || m_Background == null) WarningEmptyFields();
 
             if (m_Scrollbar != null)

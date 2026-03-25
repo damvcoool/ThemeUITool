@@ -81,7 +81,7 @@ namespace ThemedUITool
         internal static GameObject CreateToggle()
         {
             GameObject go = new GameObject("Themed Toggle", typeof(RectTransform), typeof(ToggleThemeSelector), typeof(Toggle));
-            go.GetComponent<ToggleThemeSelector>().targetToggle = go.GetComponent<Toggle>();
+            go.GetComponent<ToggleThemeSelector>().TargetToggle = go.GetComponent<Toggle>();
             go.GetComponent<Toggle>().isOn = true;
 
             var bg = new GameObject("Background", typeof(CanvasRenderer), typeof(Image));

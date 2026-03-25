@@ -20,24 +20,22 @@ namespace ThemedUITool
         public ToggleThemeSelector Item { get => m_Item; set => m_Item = value; }
         private protected override void Apply()
         {
-            if (m_Theme == null) m_Theme = Theme;
-
             if (m_Dropdown == null || m_Arrow == null || m_Item == null) WarningEmptyFields();
 
-            m_Dropdown.GetComponent<RectTransform>().sizeDelta = new Vector2(m_Theme.width, m_Theme.height);
-            ThemeUITool.SetImageTheme(m_Dropdown.image, m_Theme.dropdownImage, m_Theme.colorBlock.normalColor);
-            ThemeUITool.SetImageTheme(m_Arrow, m_Theme.dropdownArrow, m_Theme.dropdownArrowColor);
-            ThemeUITool.SetTextTheme(m_Dropdown.captionText, m_Theme.captionFontSize, m_Theme.captionFontAsset, m_Theme.captionFontColor);
+            if (m_Dropdown != null && m_Arrow != null && m_Item != null)
+            {
+                m_Dropdown.GetComponent<RectTransform>().sizeDelta = new Vector2(m_Theme.width, m_Theme.height);
+                ThemeUITool.SetImageTheme(m_Dropdown.image, m_Theme.dropdownImage, m_Theme.colorBlock.normalColor);
+                ThemeUITool.SetImageTheme(m_Arrow, m_Theme.dropdownArrow, m_Theme.dropdownArrowColor);
+                ThemeUITool.SetTextTheme(m_Dropdown.captionText, m_Theme.captionFontSize, m_Theme.captionFontAsset, m_Theme.captionFontColor);
 
-            m_Item.Theme = m_Theme.templateItem;
-            m_Template = m_Dropdown.template.GetComponent<ScrollRectThemeSelector>();
-            m_Template.Theme= m_Theme.template;
+                m_Item.Theme = m_Theme.templateItem;
+                m_Template = m_Dropdown.template.GetComponent<ScrollRectThemeSelector>();
+                m_Template.Theme = m_Theme.template;
 
-            m_Template.ApplyTheme();
-            m_Item.ApplyTheme();
-
-            
-
+                m_Template.ApplyTheme();
+                m_Item.ApplyTheme();
+            }
         }
     }
 }

@@ -10,18 +10,15 @@ namespace ThemedUITool
     public class SliderThemeSelector : TThemeSelector<SliderThemeSO>
     {
         // Members
-        //[SerializeField] private SliderThemeSO m_Theme;
         [SerializeField] private Slider m_Slider;
         [SerializeField] private Image m_Background;
 
         // Properties
-        //new public SliderThemeSO Theme { get => m_Theme; set => m_Theme = value; }
         public Slider TargetSlider { get => m_Slider; set => m_Slider = value; }
         public Image Background { get => m_Background; set => m_Background = value; }
 
         private protected override void Apply()
         {
-            if (m_Theme == null & Theme != null) m_Theme = Theme;
             if (m_Slider == null || m_Background == null) WarningEmptyFields();
 
             if (m_Slider != null)

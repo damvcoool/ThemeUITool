@@ -54,7 +54,7 @@ namespace ThemedUITool
             _hTheme = ThemeUITool.GetSpecificTheme<ScrollbarThemeSO>("DefaultHorizontalScrollbarTheme");
             _vTheme = ThemeUITool.GetSpecificTheme<ScrollbarThemeSO>("DefaultVerticalScrollbarTheme");
             _templateToggle = ThemeUITool.GetSpecificTheme<ToggleThemeSO>("DefaultTemplateToggle");
-            _templateScrollRect = ThemeUITool.GetSpecificTheme<ScrollRectThemeSO>("DefaultTemplateScrolRect");
+            _templateScrollRect = ThemeUITool.GetSpecificTheme<ScrollRectThemeSO>("DefaultTemplateScrollRect");
         }
     }
 }

@@ -10,7 +10,6 @@ namespace ThemedUITool
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            //TThemeSelector<T> themeSelector = (TThemeSelector<T>)target;
             TThemeSelector<T> themeSelector = serializedObject.targetObject as TThemeSelector<T>;
 
             DrawPropertiesExcluding(serializedObject, "m_Script");

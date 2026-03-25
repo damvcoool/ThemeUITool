@@ -19,8 +19,6 @@ namespace ThemedUITool
 
         private protected override void Apply()
         {
-            if (m_Theme == null) m_Theme = Theme;
-
             if (m_Button == null || m_ButtonText == null) WarningEmptyFields();
 
             if (m_Button != null)
